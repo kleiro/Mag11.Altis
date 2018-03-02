@@ -1,0 +1,525 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"_lz",
+				"_lzPos"
+			],
+			[
+				"diag",
+				"diag_log"
+			],
+			[
+				"setVehicl",
+				"setVehicleReceiveRemoteTargets"
+			],
+			[
+				"setVehicle",
+				"setVehicleReportRemoteTargets"
+			],
+			[
+				"setVehicleReport",
+				"setVehicleReportOwnPosition"
+			],
+			[
+				"createDiary",
+				"createDiaryRecord"
+			],
+			[
+				"_unit",
+				"_unitTypes"
+			],
+			[
+				"push",
+				"pushBack"
+			],
+			[
+				"createVe",
+				"createVehicleCrew"
+			],
+			[
+				"FIR_EA18G_",
+				"FIR_EA18G_RAIDERS"
+			],
+			[
+				"_ob",
+				"_objectName"
+			],
+			[
+				"synch",
+				"synchronizeObjectsAdd"
+			],
+			[
+				"respawn",
+				"respawnOnNimitz"
+			],
+			[
+				"NimitzVeh",
+				"nimitzVehNames"
+			],
+			[
+				"RHS",
+				"RHS_UH1Y_base"
+			],
+			[
+				"B_",
+				"B_Plane_Fighter_01_Stealth_F"
+			],
+			[
+				"JS",
+				"JS_JC_FA18E"
+			],
+			[
+				"nimitzVeh",
+				"nimitzVehPos"
+			],
+			[
+				"nimitz",
+				"nimitzVehNames"
+			],
+			[
+				"respa",
+				"respawnNimVeh"
+			],
+			[
+				"isType",
+				"isEqualTypeArray"
+			],
+			[
+				"exit",
+				"exitWith"
+			],
+			[
+				"nimitzVe",
+				"nimitzVehNames"
+			],
+			[
+				"Nimitz",
+				"nimitzVehNames"
+			],
+			[
+				"missionNa",
+				"missionNamespace"
+			],
+			[
+				"preprocess",
+				"preprocessFileLineNumbers"
+			],
+			[
+				"forea",
+				"forEach"
+			],
+			[
+				"fore",
+				"forEach"
+			],
+			[
+				"prepr",
+				"preprocessFileLineNumbers"
+			],
+			[
+				"allow",
+				"allowDamage"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "lzPractice.sqf",
+			"settings":
+			{
+				"buffer_size": 1507,
+				"line_ending": "Windows",
+				"name": "//LZPractice"
+			}
+		},
+		{
+			"file": "initServer.sqf",
+			"settings":
+			{
+				"buffer_size": 1403,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Robert/Desktop/NMDMag36.Altis/a2aDestroyed.sqf",
+		"/C/Users/Robert/Desktop/NMDMag36.Altis/a2aKilled.sqf",
+		"/C/Users/Robert/Desktop/NMDMag36.Altis/Air2AirRange.sqf",
+		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/ECM/ECM.sqf",
+		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/EW/EW_ESM.sqf",
+		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/EW/EW_SENSOR_JAM.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/respawnNimVeh.sqf",
+		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/ECM/ECM_ON.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/Air2AirRange.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/Script/ECM/ECM.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/a2aKilled.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/a2aDestroyed.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/Script/ECM/ECM_ON.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@PTF_AWS(RaidersUpdate)/Addons/FIR_AirWeaponSystem_US/FIR_AirWeaponSystem_US/Script/ECM/ECM.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/initServer.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/initPlayerLocal.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/description.ext",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/NimitzSafeZone.sqf",
+		"/C/Users/kleir/Desktop/@EA18G(RaidersUpdate)/Addons/FLAN_EA18G/FLAN_EA18G/scripts/init_EA18G.sqf",
+		"/C/Users/kleir/Desktop/@EA18G(RaidersUpdate)/Addons/FLAN_EA18G/FLAN_EA18G/scripts/WINGFOLD/EA18Gfuelprobe.sqf",
+		"/C/Users/kleir/Desktop/@EA18G(RaidersUpdate)/Addons/FLAN_EA18G/FLAN_EA18G/scripts/WINGFOLD/Wingfold.sqf",
+		"/C/Users/kleir/Desktop/@EA18G/Addons/FLAN_EA18G/FLAN_EA18G/scripts/functions/fn_jammer.sqf",
+		"/C/Users/kleir/Desktop/@EA18G/Addons/FLAN_EA18G/FLAN_EA18G/scripts/functions/fn_jamming.sqf",
+		"/C/Users/kleir/Desktop/@EA18G/Addons/FLAN_EA18G/FLAN_EA18G/scripts/functions/fn_jamMissile.sqf",
+		"/C/Users/kleir/Desktop/@EA18G/Addons/FLAN_EA18G/FLAN_EA18G/scripts/functions/fn_newJamming.sqf",
+		"/C/Users/kleir/Desktop/@PTF_AWS/Addons/FIR_AirWeaponSystem_US/FIR_AirWeaponSystem_US/Script/ECM/ECM_ON.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/script/ew/ew_esm.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/script/ew/ew_esm_off.sqf",
+		"/C/Users/kleir/Desktop/@PTF_AWS/Addons/FIR_AirWeaponSystem_US/FIR_AirWeaponSystem_US/Script/ECM/ECM.sqf",
+		"/C/Users/kleir/Desktop/@PTF_AWS/Addons/FIR_AirWeaponSystem_US/FIR_AirWeaponSystem_US/Script/ECM/ECM_AUTO.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/script/ecm/ecm_auto.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/script/ecm/ecm.sqf",
+		"/C/Users/kleir/Desktop/@EA18G/Addons/FLAN_EA18G_Cfg/FLAN_EA18G_Cfg/Config.cpp",
+		"/C/Users/kleir/Desktop/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/script/ew/ew_esm.sqf",
+		"/C/Users/kleir/Desktop/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/config.cpp",
+		"/C/Users/kleir/Documents/Arma 3/Arma3.cfg",
+		"/C/Users/kleir/Desktop/FLAN_EA18G_Cfg/Config.cpp",
+		"/C/Users/kleir/Desktop/@EA18G/Addons/FLAN_EA18G_Cfg/Config.cpp",
+		"/F/Steam/steamapps/common/Arma 3/@EA18/Addons/FLAN_EA18G_Cfg/Config.cpp",
+		"/C/Users/kleir/Desktop/Steam/steamapps/common/Arma 3/!Workshop/@EA-18G Growler/Addons/FLAN_EA18G_Cfg/config.cpp",
+		"/F/Steam/steamapps/common/Arma 3/@EA18/mod.cpp",
+		"/F/Backups/Downloads & Valuables/FSX Downloads/Aircraft/Carenado/FSX/Cessna/Carenado Citation_II(AmarEdj31)/Carenado Citation_II/SimObjects/Airplanes/Carenado S550_Citation II/aircraft.cfg",
+		"/F/Steam/steamapps/common/Arma 3/!Workshop/@EA-18G Growler/Addons/FLAN_EA18G_Cfg/Config.cpp",
+		"/C/Users/kleir/Desktop/Steam/steamapps/common/Arma 3/!Workshop/@EA-18G Growler/Addons/FLAN_EA18G/config.cpp",
+		"/F/Steam/steamapps/common/FSX/_MODS/Citation Bravo (edited)/SimObjects/Airplanes/Carenado S550_Citation II/aircraft.cfg",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/Sectors.Altis/QS_icons.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/Sectors.Altis/initPlayerLocal.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/Sectors.Altis/SquadState.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/Sectors.Altis/SquadsInit.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/Sectors.Altis/initServer.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/Sectors.Altis/Thoughts.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/script/ew/ew_decoy.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/script/ew/ew_esm.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/script/ew/ew_sensor_jam.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/script/ecm/ecm.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/script/ecm/ecm_on.sqf",
+		"/F/Steam/steamapps/common/Arma 3/!Workshop/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/Script/ECM/ECM.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/Script/EW/EW_SENSOR_JAM.sqf",
+		"/F/Steam/steamapps/common/Arma 3/!Workshop/@FIR AWS(AirWeaponSystem)/Addons/FIR_AirWeaponSystem_US/Script/EW/EW_ESM.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/functions/fn_jamming.sqf",
+		"/C/Users/kleir/Desktop/FIR_AirWeaponSystem_US/Script/ECM/ECM_AUTO.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/scan.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/init/init.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/functions/fn_newJamming.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/functions/fn_jamMissile.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/init_EA18G.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/functions/fn_jamming.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/functions/fn_alq99.sqf",
+		"/C/Users/kleir/Desktop/FLAN_EA18G/scripts/functions/fn_jammer.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/NimitzSafeZone.sqf",
+		"/F/Steam/steamapps/common/Arma 3/!Workshop/@EA-18G Growler/Addons/FLAN_EA18G/model.cfg",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/mission.sqm",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/Air2AirRange.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/respawnNimVeh.sqf",
+		"/C/Users/kleir/AppData/Local/Temp/CONFIG_server.cfg",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/initServer.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/onPlayerRespawn.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/description.ext",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/mag36.png",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDMag36.Altis/nimitzobjects.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDrakion.Altis/initServer.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDrakion.Altis/nmd/modules/vehicles/ui/scripts/RscDisplayGarage.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[1stLt]%20R%2eKlein/mpmissions/NMDrakion.Altis/respawnNimVeh.sqf",
+		"/F/Steam/steamapps/common/Arma 3/@PTF/@RHSUS/addons/rhsusf_ch53/rhsusf/addons/rhsusf_ch53/config.bin"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"diag",
+			"EA18G_NA",
+			"RAIDERS",
+			"VAQ138",
+			"NA",
+			"RAIDER",
+			"variable",
+			"ON PROGRESS",
+			"on progess",
+			"3d",
+			"marker",
+			"safeList",
+			"iterList",
+			"diag_log",
+			"_v",
+			"respawn",
+			"createvehicle",
+			"_mv22"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"RAIDERS",
+			"_newobj",
+			"_v"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "lzPractice.sqf",
+					"settings":
+					{
+						"buffer_size": 1507,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1507,
+								1507
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_name": "//LZPractice",
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 113.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "initServer.sqf",
+					"settings":
+					{
+						"buffer_size": 1403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								860,
+								860
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 167.0,
+	"status_bar_visible": true
+}
