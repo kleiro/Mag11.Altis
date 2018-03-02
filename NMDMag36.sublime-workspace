@@ -4,10 +4,6 @@
 		"selected_items":
 		[
 			[
-				"_lz",
-				"_lzPos"
-			],
-			[
 				"diag",
 				"diag_log"
 			],
@@ -128,19 +124,26 @@
 	"buffers":
 	[
 		{
-			"file": "lzPractice.sqf",
+			"file": "Air2AirRange.sqf",
 			"settings":
 			{
-				"buffer_size": 1507,
-				"line_ending": "Windows",
-				"name": "//LZPractice"
+				"buffer_size": 2268,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "initServer.sqf",
+			"file": "a2aKilled.sqf",
 			"settings":
 			{
-				"buffer_size": 1403,
+				"buffer_size": 1076,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "a2aDestroyed.sqf",
+			"settings":
+			{
+				"buffer_size": 918,
 				"line_ending": "Windows"
 			}
 		}
@@ -169,9 +172,6 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Robert/Desktop/NMDMag36.Altis/a2aDestroyed.sqf",
-		"/C/Users/Robert/Desktop/NMDMag36.Altis/a2aKilled.sqf",
-		"/C/Users/Robert/Desktop/NMDMag36.Altis/Air2AirRange.sqf",
 		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/ECM/ECM.sqf",
 		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/EW/EW_ESM.sqf",
 		"/C/Users/kleir/Desktop/AWS/FIR_AirWeaponSystem_US/Script/EW/EW_SENSOR_JAM.sqf",
@@ -314,24 +314,23 @@
 			[
 				{
 					"buffer": 0,
-					"file": "lzPractice.sqf",
+					"file": "Air2AirRange.sqf",
 					"settings":
 					{
-						"buffer_size": 1507,
+						"buffer_size": 2268,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1507,
-								1507
+								2239,
+								2239
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
-							"auto_name": "//LZPractice",
 							"bh_regions":
 							[
 								"bh_regex",
@@ -379,28 +378,104 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage"
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 113.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "initServer.sqf",
+					"file": "a2aKilled.sqf",
 					"settings":
 					{
-						"buffer_size": 1403,
+						"buffer_size": 1076,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								860,
-								860
+								442,
+								442
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "a2aDestroyed.sqf",
+					"settings":
+					{
+						"buffer_size": 918,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								918,
+								918
 							]
 						],
 						"settings":
@@ -520,6 +595,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 167.0,
+	"side_bar_width": 306.0,
 	"status_bar_visible": true
 }

@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=282;
+		nextID=284;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={16755.965,89.16507,13491.843};
-		dir[]={-0.59136742,-0.33936572,0.73153353};
-		up[]={-0.21335179,0.94065356,0.26392108};
-		aside[]={0.77768177,1.2580858e-007,0.62867445};
+		pos[]={14681.666,25.333679,16744.158};
+		dir[]={0.14830929,-0.34696066,0.92611206};
+		up[]={0.054866202,0.9378736,0.34261033};
+		aside[]={0.98744601,4.3182445e-007,-0.15813127};
 	};
 };
 binarizationWanted=0;
@@ -288,6 +288,7 @@ class ScenarioData
 	{
 		gameType="Sandbox";
 	};
+	wreckRemovalMaxTime=3600;
 };
 class CustomAttributes
 {
@@ -397,7 +398,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=102;
+		items=104;
 		class Item0
 		{
 			dataType="Marker";
@@ -5743,7 +5744,7 @@ class Mission
 			};
 			id=153;
 			type="rhsusf_CH53E_USMC_D";
-			atlOffset=1.053112;
+			atlOffset=0.25992775;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10214,7 +10215,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[_this select 0, [""Tail Rotor Fail"",{   _v = _this select 3;   if (_v getHitPointDamage ""HitVRotor"" > 0) then {    _v setHitPointDamage [""HitVRotor"", 0];   } else {    _v setHitPointDamage [""HitVRotor"", 1];   };  },_this select 0,4,false,true]] remoteExec [""addAction"",0,true];    [_this select 0, [""Main Rotor Fail"",{   _v = _this select 3;   if (_v getHitPointDamage ""HitHRotor"" > 0) then {    _v setHitPointDamage [""HitHRotor"", 0];   } else {    _v setHitPointDamage [""HitHRotor"", 1];   };  },_this select 0,4,false,true]] remoteExec [""addAction"",0,true];";
+							value="[_this select 0] spawn damagedHelo;";
 						};
 					};
 				};
@@ -10385,7 +10386,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, [""Main Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitHRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitHRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitHRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];[this, [""Tail Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitVRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitVRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitVRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];}";
+				name="testVeh1";
 			};
 			id=213;
 			type="RHS_UH1Y_UNARMED_d";
@@ -10444,7 +10445,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, [""Main Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitHRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitHRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitHRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];[this, [""Tail Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitVRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitVRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitVRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];}";
 			};
 			id=214;
 			type="RHS_UH1Y_UNARMED_d";
@@ -10503,7 +10503,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, [""Main Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitHRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitHRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitHRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];[this, [""Tail Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitVRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitVRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitVRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];}";
 			};
 			id=215;
 			type="RHS_UH1Y_UNARMED_d";
@@ -10562,7 +10561,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, [""Main Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitHRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitHRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitHRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];[this, [""Tail Rotor Fail"",{ " \n " _v = _this select 3; " \n " if (_v getHitPointDamage ""HitVRotor"" > 0) then { " \n "  _v setHitPointDamage [""HitVRotor"", 0]; " \n " } else { " \n "  _v setHitPointDamage [""HitVRotor"", 1]; " \n " }; " \n "},this,4,false,true]] remoteExec [""addAction"",0,true];}";
 			};
 			id=216;
 			type="RHS_UH1Y_UNARMED_d";
@@ -14267,6 +14265,38 @@ class Mission
 				};
 				nAttributes=4;
 			};
+		};
+		class Item102
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={14749.328,17.879539,17016.588};
+			};
+			name="damagedHeloWait";
+			init="call{DHP = 0;}";
+			id=282;
+			type="Logic";
+		};
+		class Item103
+		{
+			dataType="Trigger";
+			position[]={14699.249,17.91,16781.09};
+			angle=0.78740513;
+			class Attributes
+			{
+				condition="call{DHP == 1;}";
+				onActivation="call{{[_x] spawn damagedHelo}forEach thisList;}";
+				onDeactivation="call{deleteVehicle thisTrigger;}";
+				sizeA=10;
+				sizeB=32.626999;
+				sizeC=10;
+				activationBy="ANY";
+				isRectangle=1;
+				isServerOnly=1;
+			};
+			id=283;
+			type="EmptyDetector";
 		};
 	};
 	class Connections
