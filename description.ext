@@ -109,3 +109,7 @@ class CfgRemoteExec
 		class localityChange {allowedTargets = 0;};
 	};
 };
+
+//--- R.Klein Dialogs
+#include "defines.hpp"
+#include "rKleinsDialogs.hpp"

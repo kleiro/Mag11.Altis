@@ -19,9 +19,10 @@ if ( !isMultiplayer ) then {
 locationList = nearestLocations [[0,0,0], ["NameVillage","NameCity","NameCityCapital"], 25000];
 
 nimObj = [[],[],[],[]];//nimObj nested array: [[objname1,objname2],[objtype1,objtype2],[objpos1,objpos2],[objrot1,objrot2]] Positions are in ASL
-iterList = [[],[]]; //List of objects that has been in the safe zone, but not for 5 seconds, sorted: Object, Iterations in, Iterations passed
+iterList = [[],[]]; //List of objects that has been in the safe zone, but not for 5 seconds, format: Object, Iterations in, Iterations passed
 safeList = []; //List of objects previously in safe zone used in nimitzSafeZone script
 a2aTargets =[[],[]]; //List of objects concerning the a2a zone, arrays: Player, Enemy Aircraft for Player
+lzPracticeList = [0,[],[]]; //List of current LZ scenarios (max 2 at a time): [#active,[bluUnitsArray#1],[bluUnitsArray#2]]
 
 respawnNimVeh = compile preprocessFileLineNumbers "respawnNimVeh.sqf";
 nimitzSafeZone = compile preprocessFileLineNumbers "NimitzSafeZone.sqf";
@@ -30,6 +31,8 @@ a2aRange = compile preprocessFileLineNumbers "Air2AirRange.sqf";
 a2aDestroyed = compile preprocessFileLineNumbers "a2aDestroyed.sqf";
 a2aKilled = compile preprocessFileLineNumbers "a2aKilled.sqf";
 damagedHelo = compile preprocessFileLineNumbers "damagedHeloPractice.sqf";
+lzPractice = compile preprocessFileLineNumbers "lzPractice.sqf";
+lzDialog = compile preprocessFileLineNumbers "lzDialog.sqf";
 
 timer = 1;
 timer1 = 1;
