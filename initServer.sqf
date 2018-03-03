@@ -16,7 +16,7 @@ if ( !isMultiplayer ) then {
 
 };
 
-locationList = nearestLocations [[0,0,0], ["NameVillage","NameCity","NameCityCapital"], 40000];
+locationList = nearestLocations [(getArray (configFile >> "CfgWorlds" >> worldName >> "CenterPosition")), ["NameVillage","NameCity","NameCityCapital"], 30000];
 
 nimObj = [[],[],[],[]];//nimObj nested array: [[objname1,objname2],[objtype1,objtype2],[objpos1,objpos2],[objrot1,objrot2]] Positions are in ASL
 iterList = [[],[]]; //List of objects that has been in the safe zone, but not for 5 seconds, format: Object, Iterations in, Iterations passed

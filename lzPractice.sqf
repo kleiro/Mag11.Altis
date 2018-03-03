@@ -10,54 +10,92 @@
 2. Another random position is selected some meters away for spawning blufor units
 3. Another position in the same direction even further away is selected for spawning opfor units
 */
+
+//---fnc_UnitDespawn checks for units within 20 meters of the delivery point and deletes them
+fnc_UnitDespawn = {
+
+	params ["_delPos","_lzPracticeNum","_taskName"];
+	_despawned = 0;
+
+	while {_despawned < (count (missionNamespace getVariable ("masterUnitsList" + (str _lzPracticeNum))))} do {
+		uisleep 5;
+		mkfDelete = [];
+		{
+			if ((_x distance _delPos) < 20 && (isNull objectParent _x)) then {
+				mkfDelete pushBack _x;
+				deleteVehicle _x;
+				_despawned = _despawned + 1;
+			};
+		}forEach (missionNamespace getVariable ("masterUnitsList" + (str _lzPracticeNum)));
+	};
+	missionNamespace setVariable ["notComplete" + (str _lzPracticeNum), false];
+	["Mission Complete!!!"] remoteExec ["Hint",0,false];
+	lzPracticeList set [0, (lzPracticeList select 0) - 1];
+	[_taskName, "Succeeded", true] call BIS_fnc_taskSetState;
+	uisleep 10;
+	[_taskName] call BIS_fnc_deleteTask;
+};
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//---MAIN BODY
 params["_case","_hueys","_stals","_diff"];
+
 diag_log format ["*** LZPractice OUTPUT: %1, %2, %3, %4", _case, _hueys, _stals, _diff];
 
 if !(isServer) exitWith {};
 
 if((lzPracticeList select 0) > 1) exitWith {["Maximum of 2 LZ scenarios at a time"] remoteExec ["hint",0,false];};
 lzPracticeList set [0, (lzPracticeList select 0) + 1];
-_lzPracticeNumber = lzPracticeList select 0;
+_lzPracticeNum = lzPracticeList select 0;
 _location = selectRandom locationList;
 _lzPos = [];
 _lzSearchPos = [];
+_delPos = [14169.9,16264.5,0];
 _bluPos = [];
 _opfPos = [];
 
 
 while {(count _lzPos) == 0} do {
 	_lzSearchPos = (locationPosition _location) getPos [random 1000, random 359];
-	_lzPos = [_lzSearchPos, 0, 100, 8, 0, .45, 0, [], []] call bis_fnc_findsafepos;
+	_lzPos = [_lzSearchPos, 0, 125, 9, 0, .45, 0, [], []] call bis_fnc_findsafepos;
 };
 
-_dir = random 359;
-_bluPos = (_lzPos) getPos [random 150, _dir];
-_opfPos = (_bluPos) getPos [(random 700)+200, _dir];
+while {_bluPos isEqualTo [] && _opfPos isEqualTo []} do {
+	_dir = random 359;
+	_bluPos = (_lzPos) getPos [(random 150)+50, _dir];
+	_opfPos = (_bluPos) getPos [(random 700)+200, _dir];
+	if ((surfaceIsWater _bluPos) || (surfaceIsWater _opfPos)) then {
+		_bluPos = [];
+		_opfPos = [];
+	};
+};
+
+
+
 
 
 //Create blufor groups based on the information passed by the gui
 _count = _hueys + (_stals * 3);
-lzPracticeList set [_lzPracticeNumber, 6 * _count];
-_unassignedUnits = [];
+_masterUnitsList = [];
 
 //Probably more convenient now to add all units into one large array and then assign them as vehicle cargo as helo's show up
 for "_i" from 1 to _count do {
 	_bluGroup = [_bluPos, WEST, ["B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F"]] call BIS_fnc_spawnGroup;
 	_bluGroup deleteGroupWhenEmpty true;
 	{
-		_unassignedUnits pushBack _x;
+		_masterUnitsList pushBack _x;
+		_x allowDamage false;
 	}forEach (units _bluGroup);
 
-
-
-	switch (_lzPracticeNumber) do
+	switch (_lzPracticeNum) do
 	{
 		case 1: {
 			{
 				_x addEventHandler ["GetInMan", {
-					lzPracticeList set [1, ((lzPracticeList select 1)-1)];
-					{deleteWaypoint _x}forEach (waypoints (_this select 0));
+					//lzPracticeList set [1, ((lzPracticeList select 1)-1)];
 					(_this select 0) allowDamage true;
+					//(vehicle (_this select 0)) setVariable ["Units", (((vehicle (_this select 0)) getVariable ["Units",[]]) pushBack (_this select 0))];
 				}];
 			}forEach (units _bluGroup);
 		};
@@ -65,69 +103,58 @@ for "_i" from 1 to _count do {
 		case 2: {
 			{
 				_x addEventHandler ["GetInMan", {
-					lzPracticeList set [2, ((lzPracticeList select 2)-1)];
-					{deleteWaypoint _x}forEach (waypoints (_this select 0));
+					//lzPracticeList set [2, ((lzPracticeList select 2)-1)];
 					(_this select 0) allowDamage true;
+					//(vehicle (_this select 0)) setVariable ["Units", (((vehicle (_this select 0)) getVariable ["Units",[]]) pushBack (_this select 0))];
 				}];
 			}forEach (units _bluGroup);
 		};
 	};
 };
 
+missionNamespace setVariable ["masterUnitsList" + (str _lzPracticeNum), + _masterUnitsList]; //Used to compare against and delete from in case of unit death
+missionNamespace setVariable ["pickupList" + (str _lzPracticeNum), + _masterUnitsList]; //Used by helos to know which units to pickup
+missionNamespace setVariable ["moveList" + (str _lzPracticeNum), + _masterUnitsList]; //Used to keep track of units to move at the drop point
+missionNamespace setVariable ["notComplete" + (str _lzPracticeNum), true];
+
 //Define opfor compositions here based upon difficulty settings
 
 //Create the Task and notification
 _locName = format ["Extract the units from the LZ near %1", text _location];
-_taskName = "lzTask" + (str _lzPracticeNumber);
+_taskName = "lzTask" + (str _lzPracticeNum);
 [west,_taskName,[_locName,("LZ Practice at " + (text _location)), ""],_lzPos,false,1,true] call BIS_fnc_taskCreate;
 [_taskName, false] call BIS_fnc_taskSetAlwaysVisible;
 
-//Create Triggers here for delivery of troops
 
 //Get units into the helicopters once they arrive
-_helosOld = [];
-while {(lzPracticeList select _lzPracticeNumber) > 0} do {
 
-	_helosNew = [];
+[_delPos, _lzPracticeNum, _taskName] spawn fnc_UnitDespawn;
+_helosInUse = [];
 
-	//Find helos within 100 meters
-
-	_helosTemp = _lzPos nearEntities ["Helicopter", 100];
+while {missionNamespace getVariable ("notComplete" + (str _lzPracticeNum))} do {
+	_moveList = +(missionNamespace getVariable ("moveList" +(str _lzPracticeNum)));
+	//Check for new helos in the area and start heloMon for them
 	{
-		if !(_x in _helosOld) then { _helosNew pushBack _x};
-	}forEach _helosTemp;
-
-
-	//Remove waypoints if helos have left the area
-	_markForDelete = [];
-	{
-		if !(_x in _helosTemp) then {
-			diag_log format ["***LZP OUTPUT: Deleting %1", _x];
-			_unassignedUnits append (_x getVariable "Units");
-			_x setVariable ["HeloMonHandle", false];
-			_markForDelete pushBack _x;
+		if !(_x in _helosInUse) then {
+			_helosInUse pushBack _x;
+			[_x,_lzPracticeNum, _lzPos, _delPos] spawn heloMon;
 		};
-	}forEach _helosOld;
+	}forEach (_lzPos nearEntities ["Helicopter", 100]);
 
-	{_helosOld deleteAt (_helosOld find _x);}forEach _markForDelete;
-
-
-	//Start helMon to monitor helo's altitude and add waypoints if below .6 ATL
+	/*//Check for units near the deliver position and move them once they're off the helicopter
+	_mkFDel = [];
 	{
-		_helo = _x;
-		if (_helo emptyPositions "CARGO" > 0) then {
-
-			diag_log format["***LZP OUTPUT: Starting heloMon for %1", _helo];
-
-			_helo setVariable ["Units", (_unassignedUnits select [0, _helo emptyPositions "Cargo"])];
-			_unassignedUnits deleteRange [0, _helo emptyPositions "Cargo"];
-
-			_helo setVariable ["HeloMonHandle", true];
-			_handle = [_helo, _lzPos] spawn heloMon;
-
-
-
-			_helosOld pushBack _x;
+		if ((_x distance _delPos < 200) && (isNull objectParent _x)) then {
+			_x doMove _delPos;
+			_mkFDel pushBack _x;
 		};
-	}forEach _helosNew;
+	}forEach _moveList;
+
+
+	{_moveList deleteAt (_moveList find _x);}forEach _mkFDel;
+	missionNamespace setVariable ["moveList" + (str _lzPracticeNum), _moveList];
+	*/
 };
+
+
+//[][][B Alpha 2-3:1,B Alpha 2-3:2,B Alpha 2-3:3,B Alpha 2-3:4,B Alpha 2-3:5,B Alpha 2-3:6,B Alpha 2-4:1,B Alpha 2-4:2,B Alpha 2-4:3,B Alpha 2-4:4,B Alpha 2-4:5,B Alpha 2-4:6,B Alpha 2-5:1,B Alpha 2-5:2,B Alpha 2-5:3,B Alpha 2-5:4,B Alpha 2-5:5,B Alpha 2-5:6]

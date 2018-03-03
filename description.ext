@@ -21,7 +21,7 @@ loadScreen = "loadScreen.paa";
 
 //--- Settings
 respawn = 3;
-respawnDelay = 10;
+respawnDelay = 3;
 respawnOnStart = 1;
 respawnTemplates[] = { "MenuPosition" };
 disabledAI = 1;
