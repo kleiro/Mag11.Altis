@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14687.586,23.036999,16726.867};
-		dir[]={-0.92254764,-0.30157772,0.24085735};
-		up[]={-0.29182377,0.95342469,0.076188944};
-		aside[]={0.25261843,6.9187081e-008,0.96758944};
+		pos[]={14674.373,23.036999,16725.709};
+		dir[]={-0.5323149,-0.1710521,0.82913381};
+		up[]={-0.092430845,0.98525017,0.14397126};
+		aside[]={0.84153455,-5.3551048e-008,0.54027218};
 	};
 };
 binarizationWanted=0;
@@ -11410,7 +11410,7 @@ class Mission
 		class Item91
 		{
 			dataType="Trigger";
-			position[]={15150.244,1397.368,8110.7559};
+			position[]={15150.244,2083.3379,8110.7559};
 			class Attributes
 			{
 				name="a2azone";
@@ -11419,14 +11419,14 @@ class Mission
 				onDeactivation="call{timer1 = 1;}";
 				sizeA=1500;
 				sizeB=1500;
-				sizeC=1000;
+				sizeC=500;
 				repeatable=1;
 				activationBy="ANYPLAYER";
 				isServerOnly=1;
 			};
 			id=159;
 			type="EmptyDetectorAreaR50";
-			atlOffset=1500;
+			atlOffset=2185.97;
 		};
 		class Item92
 		{
@@ -14013,7 +14013,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14644.833,17.91,16794.24};
+				position[]={14647.129,17.91,16795.355};
 			};
 			id=281;
 			type="ModuleCurator_F";
@@ -14143,7 +14143,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14642.647,17.911438,16792.063};
-						angles[]={0,2.3552239,0};
+						angles[]={0,2.355217,0};
 					};
 					side="West";
 					flags=7;
@@ -14151,7 +14151,7 @@ class Mission
 					{
 						name="zs1";
 						description="Zeus";
-						isPlayer=1;
+						isPlayable=1;
 					};
 					id=285;
 					type="B_Fighter_Pilot_F";

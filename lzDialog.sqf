@@ -33,5 +33,5 @@ buttonSetAction[2400, "
 	_stals = lbCurSel 2101;
 	_diff = lbCurSel 2102;
 	closeDialog 1;
-	[0,_hueys,_stals,_diff,[]] spawn lzPractice
+	[0,_hueys,_stals,_diff,[]] remoteExec ['lzPractice', 2, false]
 "];

@@ -107,6 +107,7 @@ class CfgRemoteExec
 		mode = 2;
 		jip = 1;
 		class localityChange {allowedTargets = 0;};
+		class lzPractice {allowedTargets = 2;};
 	};
 };
 

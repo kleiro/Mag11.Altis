@@ -4,8 +4,6 @@ if !(isServer) exitWith {};
 
 params["_passedVehicle"];
 
-diag_log format["***DHP OUTPUT: %1", _passedVehicle];
-
 //Driver Actions
 [_passedVehicle, ["Main Rotor Fail",{
 	_v = _this select 3;
