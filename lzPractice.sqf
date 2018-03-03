@@ -38,14 +38,16 @@ _opfPos = (_bluPos) getPos [(random 700)+200, _dir];
 //Create blufor groups based on the information passed by the gui
 _count = _hueys + (_stals * 3);
 lzPracticeList set [_lzPracticeNumber, 6 * _count];
-_unassignedGroups = [];
-_assignedGroups = [];
+_unassignedUnits = [];
 
 //Probably more convenient now to add all units into one large array and then assign them as vehicle cargo as helo's show up
 for "_i" from 1 to _count do {
-	_tempGroup = [_bluPos, WEST, ["B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F"]] call BIS_fnc_spawnGroup;
-	_tempGroup deleteGroupWhenEmpty true;
-	_unassignedGroups pushBack _tempGroup;
+	_bluGroup = [_bluPos, WEST, ["B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F"]] call BIS_fnc_spawnGroup;
+	_bluGroup deleteGroupWhenEmpty true;
+	{
+		_unassignedUnits pushBack _x;
+	}forEach (units _bluGroup);
+
 
 
 	switch (_lzPracticeNumber) do
@@ -57,7 +59,7 @@ for "_i" from 1 to _count do {
 					{deleteWaypoint _x}forEach (waypoints (_this select 0));
 					(_this select 0) allowDamage true;
 				}];
-			}forEach (units _tempGroup);
+			}forEach (units _bluGroup);
 		};
 
 		case 2: {
@@ -67,7 +69,7 @@ for "_i" from 1 to _count do {
 					{deleteWaypoint _x}forEach (waypoints (_this select 0));
 					(_this select 0) allowDamage true;
 				}];
-			}forEach (units _tempGroup);
+			}forEach (units _bluGroup);
 		};
 	};
 };
@@ -89,7 +91,7 @@ while {(lzPracticeList select _lzPracticeNumber) > 0} do {
 	_helosNew = [];
 
 	//Find helos within 100 meters
-	//Need to add an eventhandler to these helos so that when they land, it adds a get in waypoint
+
 	_helosTemp = _lzPos nearEntities ["Helicopter", 100];
 	{
 		if !(_x in _helosOld) then { _helosNew pushBack _x};
@@ -101,7 +103,7 @@ while {(lzPracticeList select _lzPracticeNumber) > 0} do {
 	{
 		if !(_x in _helosTemp) then {
 			diag_log format ["***LZP OUTPUT: Deleting %1", _x];
-			_unassignedGroups append (_x getVariable "Groups");
+			_unassignedUnits append (_x getVariable "Units");
 			_x setVariable ["HeloMonHandle", false];
 			_markForDelete pushBack _x;
 		};
@@ -117,10 +119,8 @@ while {(lzPracticeList select _lzPracticeNumber) > 0} do {
 
 			diag_log format["***LZP OUTPUT: Starting heloMon for %1", _helo];
 
-			_groupsToAssign = (_helo emptyPositions "Cargo") / 6;
-			if (_groupsToAssign < 0) then {_groupsToAssign = 1};
-			_helo setVariable ["Groups", (_unassignedGroups select [0, _groupsToAssign])];
-			_unassignedGroups deleteRange [0, _groupsToAssign];
+			_helo setVariable ["Units", (_unassignedUnits select [0, _helo emptyPositions "Cargo"])];
+			_unassignedUnits deleteRange [0, _helo emptyPositions "Cargo"];
 
 			_helo setVariable ["HeloMonHandle", true];
 			_handle = [_helo, _lzPos] spawn heloMon;
