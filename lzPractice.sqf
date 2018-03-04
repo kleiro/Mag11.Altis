@@ -14,14 +14,14 @@
 //---fnc_UnitDespawn checks for units within 20 meters of the delivery point and deletes them
 fnc_UnitDespawn = {
 
-	params ["_delPos","_lzPracticeNum","_taskName"];
+	params ["_lzPracticeNum","_taskName","_lzMarker"];
 	_despawned = 0;
 
 	while {_despawned < (count (missionNamespace getVariable ("masterUnitsList" + (str _lzPracticeNum))))} do {
 		uisleep 5;
 		mkfDelete = [];
 		{
-			if ((_x distance _delPos) < 20 && (isNull objectParent _x)) then {
+			if ((_x distance (missionNamespace getVariable "lzpDropOff")) < 30 && (isNull objectParent _x)) then {
 				mkfDelete pushBack _x;
 				deleteVehicle _x;
 				_despawned = _despawned + 1;
@@ -32,6 +32,7 @@ fnc_UnitDespawn = {
 	["Mission Complete!!!"] remoteExec ["Hint",0,false];
 	lzPracticeList set [0, (lzPracticeList select 0) - 1];
 	[_taskName, "Succeeded", true] call BIS_fnc_taskSetState;
+	deleteMarker _lzMarker;
 	uisleep 10;
 	[_taskName] call BIS_fnc_deleteTask;
 };
@@ -51,7 +52,6 @@ _lzPracticeNum = lzPracticeList select 0;
 _location = selectRandom locationList;
 _lzPos = [];
 _lzSearchPos = [];
-_delPos = [14169.9,16264.5,0];
 _bluPos = [];
 _opfPos = [];
 
@@ -119,42 +119,35 @@ missionNamespace setVariable ["notComplete" + (str _lzPracticeNum), true];
 
 //Define opfor compositions here based upon difficulty settings
 
-//Create the Task and notification
-_locName = format ["Extract the units from the LZ near %1", text _location];
-_taskName = "lzTask" + (str _lzPracticeNum);
-[west,_taskName,[_locName,("LZ Practice at " + (text _location)), ""],_lzPos,false,1,true] call BIS_fnc_taskCreate;
+//Create the Marker and Task
+
+_lzText = (selectRandom (missionNamespace getVariable "lzpNames"));
+_locName = format ["Extract the units from LZ %2 near %1", text _location, _lzText];
+_taskName = str(taskIndex);
+taskIndex = taskIndex + 1;
+[west,_taskName,[_locName, format ["LZ %2 near %1", text _location, _lzText], ""],(missionNamespace getVariable "lzpDropOff"),false,1,true] call BIS_fnc_taskCreate;
+[_taskName, "Created"] call BIS_fnc_taskSetState;
 [_taskName, false] call BIS_fnc_taskSetAlwaysVisible;
+
+_lzMarker = createMarker [_taskName, _lzPos];
+_lzMarker setMarkerType "hd_pickup";
+_lzMarker setMarkerColor "ColorGreen";
+_lzMarker setMarkerText _lzText;
+
 
 
 //Get units into the helicopters once they arrive
 
-[_delPos, _lzPracticeNum, _taskName] spawn fnc_UnitDespawn;
+[_lzPracticeNum, _taskName, _lzMarker] spawn fnc_UnitDespawn;
 _helosInUse = [];
 
 while {missionNamespace getVariable ("notComplete" + (str _lzPracticeNum))} do {
-	_moveList = +(missionNamespace getVariable ("moveList" +(str _lzPracticeNum)));
 	//Check for new helos in the area and start heloMon for them
 	{
 		if !(_x in _helosInUse) then {
 			_helosInUse pushBack _x;
-			[_x,_lzPracticeNum, _lzPos, _delPos] spawn heloMon;
+			[_x,_lzPracticeNum, _lzPos, (missionNamespace getVariable "lzpDropOff")] spawn heloMon;
 		};
-	}forEach (_lzPos nearEntities ["Helicopter", 100]);
-
-	/*//Check for units near the deliver position and move them once they're off the helicopter
-	_mkFDel = [];
-	{
-		if ((_x distance _delPos < 200) && (isNull objectParent _x)) then {
-			_x doMove _delPos;
-			_mkFDel pushBack _x;
-		};
-	}forEach _moveList;
-
-
-	{_moveList deleteAt (_moveList find _x);}forEach _mkFDel;
-	missionNamespace setVariable ["moveList" + (str _lzPracticeNum), _moveList];
-	*/
+		"SmokeShellGreen" createVehicle _lzPos;
+	}forEach (_lzPos nearEntities ["Helicopter", 400]);
 };
-
-
-//[][][B Alpha 2-3:1,B Alpha 2-3:2,B Alpha 2-3:3,B Alpha 2-3:4,B Alpha 2-3:5,B Alpha 2-3:6,B Alpha 2-4:1,B Alpha 2-4:2,B Alpha 2-4:3,B Alpha 2-4:4,B Alpha 2-4:5,B Alpha 2-4:6,B Alpha 2-5:1,B Alpha 2-5:2,B Alpha 2-5:3,B Alpha 2-5:4,B Alpha 2-5:5,B Alpha 2-5:6]

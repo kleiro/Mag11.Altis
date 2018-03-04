@@ -23,6 +23,55 @@ iterList = [[],[]]; //List of objects that has been in the safe zone, but not fo
 safeList = []; //List of objects previously in safe zone used in nimitzSafeZone script
 a2aTargets =[[],[]]; //List of objects concerning the a2a zone, arrays: Player, Enemy Aircraft for Player
 lzPracticeList = [0,[],[]]; //List of current LZ scenarios (max 2 at a time): [#active,[bluUnitsRemaining#1],[bluUnitsRemaining#2]]
+taskIndex = 100;
+missionNamespace setVariable ["lzpDropOff",[14169.9,16264.5,0]];
+missionNamespace setVariable ["lzpNames",[
+"Budweiser",
+"Heineken",
+"Jack Daniels",
+"Leinies",
+"Miller",
+"Raw Dog",
+"FUBAR",
+"Moonshine",
+"Pooter",
+"Landshark",
+"Gaben",
+"Bjork Bjork",
+"Chippewa",
+"Mississippi",
+"Commiefornia",
+"Corona",
+"Grey Goose",
+"Gordon",
+"Hangover",
+"OMGWTFBBQ",
+"Bronco",
+"Bulldog",
+"Cactus",
+"Brickyard",
+"Charlie Brown",
+"Cobra",
+"Colt",
+"Armalite",
+"Dragon",
+"Hurricane",
+"Low Ball",
+"Smelly Smell",
+"Ranger",
+"Snoopy",
+"Dexter",
+"Johnny Bravo",
+"CatDog",
+"Apollo",
+"Saturn",
+"Voyager",
+"Enterprise",
+"Tauri",
+"Proxima",
+"Milky Way",
+"Kevin Bacon"
+]];
 
 respawnNimVeh = compile preprocessFileLineNumbers "respawnNimVeh.sqf";
 nimitzSafeZone = compile preprocessFileLineNumbers "NimitzSafeZone.sqf";

@@ -4,12 +4,68 @@
 		"selected_items":
 		[
 			[
-				"Hel",
-				"HeloMonHandle"
+				"moveOut",
+				"moveOutUnits"
+			],
+			[
+				"waitU",
+				"waitUntil"
+			],
+			[
+				"parent",
+				"objectParent"
+			],
+			[
+				"unass",
+				"unassignVehicle"
+			],
+			[
+				"assignAs",
+				"assignAsCargo"
+			],
+			[
+				"order",
+				"orderGetIn"
 			],
 			[
 				"_lz",
-				"_lzPracticeNumber"
+				"_lzPracticeNum"
+			],
+			[
+				"_lzP",
+				"_lzPracticeNum"
+			],
+			[
+				"isn",
+				"isNull"
+			],
+			[
+				"_unit",
+				"_unitArray"
+			],
+			[
+				"_uni",
+				"_unitArray"
+			],
+			[
+				"forEach",
+				"forEach"
+			],
+			[
+				"do",
+				"doMove"
+			],
+			[
+				"getPos",
+				"getPosATL"
+			],
+			[
+				"HeloM",
+				"HeloMonHandle"
+			],
+			[
+				"Hel",
+				"HeloMonHandle"
 			],
 			[
 				"lzPractice",
@@ -62,10 +118,6 @@
 			[
 				"createDiary",
 				"createDiaryRecord"
-			],
-			[
-				"_unit",
-				"_unitTypes"
 			],
 			[
 				"push",
@@ -176,7 +228,7 @@
 			"file": "lzPractice.sqf",
 			"settings":
 			{
-				"buffer_size": 4748,
+				"buffer_size": 6072,
 				"line_ending": "Windows"
 			}
 		},
@@ -184,7 +236,7 @@
 			"file": "heloMon.sqf",
 			"settings":
 			{
-				"buffer_size": 1161,
+				"buffer_size": 3549,
 				"line_ending": "Windows",
 				"name": "//HeloMoniter"
 			}
@@ -308,7 +360,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -319,6 +371,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_lzPracticeNumber",
+			"_tempGroup",
+			"_groupArray",
 			"select [",
 			"select",
 			"buttonmenu",
@@ -351,6 +406,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"_lzPracticeNum",
+			"_bluGroup",
+			"_unitArray",
 			"RAIDERS",
 			"_newobj",
 			"_v"
@@ -364,7 +422,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -447,15 +505,15 @@
 					"file": "lzPractice.sqf",
 					"settings":
 					{
-						"buffer_size": 4748,
+						"buffer_size": 6072,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2078,
-								2078
+								5957,
+								5963
 							]
 						],
 						"settings":
@@ -512,7 +570,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1448.0,
+						"translation.y": 2144.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -522,15 +580,15 @@
 					"file": "heloMon.sqf",
 					"settings":
 					{
-						"buffer_size": 1161,
+						"buffer_size": 3549,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1101,
-								1112
+								848,
+								844
 							]
 						],
 						"settings":
@@ -584,10 +642,11 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage"
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 96.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
