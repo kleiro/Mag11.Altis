@@ -410,7 +410,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=149;
+		items=148;
 		class Item0
 		{
 			dataType="Marker";
@@ -15787,84 +15787,6 @@ class Mission
 			};
 		};
 		class Item147
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14646.43,18.023573,16766.223};
-				angles[]={-0,2.3263319,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				name="tVeh1";
-			};
-			id=389;
-			type="rhsusf_CH53E_USMC_D";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="Enh_featureType";
-					expression="_this setFeatureType (parseNumber _value)";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="rhs_decalNumber_type";
-					expression="_this setVariable ['rhs_decalNumber_type', _value];[_this,[['Number', cCH53NumberPlaces, _value]]] call rhsusf_fnc_decalsInit";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="USMCGrey";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""FirstAidKit""],[4]],[[],[]],[[""ToolKit"",""ItemGPS"",""ItemRadio""],[1,1,1]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=3;
-			};
-		};
-		class Item148
 		{
 			dataType="Logic";
 			class PositionInfo
