@@ -22,8 +22,9 @@ nimObj = [[],[],[],[]];//nimObj nested array: [[objname1,objname2],[objtype1,obj
 iterList = [[],[]]; //List of objects that has been in the safe zone, but not for 5 seconds, format: Object, Iterations in, Iterations passed
 safeList = []; //List of objects previously in safe zone used in nimitzSafeZone script
 a2aTargets =[[],[]]; //List of objects concerning the a2a zone, arrays: Player, Enemy Aircraft for Player
-lzPracticeList = [0,[],[]]; //List of current LZ scenarios (max 2 at a time): [#active,[bluUnitsRemaining#1],[bluUnitsRemaining#2]]
 taskIndex = 100;
+
+missionNamespace setVariable["lzTasks",[]];
 missionNamespace setVariable ["lzpDropOff",[14169.9,16264.5,0]];
 missionNamespace setVariable ["lzpNames",[
 "Budweiser",
@@ -81,6 +82,7 @@ a2aDestroyed = compile preprocessFileLineNumbers "a2aDestroyed.sqf";
 a2aKilled = compile preprocessFileLineNumbers "a2aKilled.sqf";
 damagedHelo = compile preprocessFileLineNumbers "damagedHeloPractice.sqf";
 lzPractice = compile preprocessFileLineNumbers "lzPractice.sqf";
+lzPracticeCancel = compile preprocessFileLineNumbers "lzPracticeCancel.sqf";
 lzDialog = compile preprocessFileLineNumbers "lzDialog.sqf";
 heloMon = compile preprocessFileLineNumbers "heloMon.sqf";
 

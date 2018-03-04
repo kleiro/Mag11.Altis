@@ -1,5 +1,6 @@
 //lzDialog.sqf
 //Creates the dialog for lz practice
+params["_passed"];
 
 createDialog "lzDialog";
 
@@ -21,11 +22,23 @@ lbSetCurSel [2101,0];
 }forEach ["Cold","Mild","Hot","We Gon' Die"];
 lbSetCurSel [2102,1];
 
+//add running lz practices to listbox
+if (count (missionNamespace getVariable "lzTasks") > 0) then {
+	{
+		lbAdd[1500, (_x select 0)];
+	}forEach (missionNamespace getVariable "lzTasks");
+}else {
+	lbAdd[1500, "(None)"];
+};
+//////////////////////////////////////ADD QUOTATIONS TO THIS AFTER
+buttonSetAction[2402,"
+	_index = lbCurSel 1500;
+	[_index] remoteExec ['lzPracticeCancel', 2, false];
+	closeDialog 1;
+"];
+
 //set cancel button to close the dialog
 buttonSetAction[2401, "closeDialog 2"];
-
-
-
 
 //set start button to take parameters and forward them to lzPractice.sqf
 buttonSetAction[2400, "
@@ -33,5 +46,5 @@ buttonSetAction[2400, "
 	_stals = lbCurSel 2101;
 	_diff = lbCurSel 2102;
 	closeDialog 1;
-	[0,_hueys,_stals,_diff,[]] remoteExec ['lzPractice', 2, false]
+	[_hueys,_stals,_diff,player] remoteExec ['lzPractice', 2, false]
 "];
