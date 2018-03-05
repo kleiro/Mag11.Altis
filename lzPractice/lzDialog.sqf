@@ -32,8 +32,11 @@ if (count (missionNamespace getVariable "lzTasks") > 0) then {
 //////////////////////////////////////ADD QUOTATIONS TO THIS AFTER
 buttonSetAction[2402,"
 	_index = lbCurSel 1500;
-	[_index] remoteExec ['lzPracticeCancel', 2, false];
-	closeDialog 1;
+	if (count (missionNamespace getVariable 'lzTasks') > 0) then {
+		_task = ((missionNamespace getVariable 'lzTasks') select _index) select 1;
+		missionNameSpace setVariable ['taskState' + _task, 'Canceled'];
+		closeDialog 1;
+	};
 "];
 
 //set cancel button to close the dialog

@@ -53,6 +53,16 @@ missionNamespace setVariable ["lzpNames",[
 "Kevin Bacon"
 ]];
 
+//OpFor spawn table for each difficulty
+missionNamespace setVariable ["opforSpawnTable", [
+//Mild
+[["OIA_InfSquad", 3]],
+//Hot
+[["OIA_InfSquad", 4], ["OIA_InfTeam_AA", 1], ["OIA_MotInf_MGTeam", 2]],
+//We gon Die
+[["OIA_InfSquad", 4], ["OIA_MotInf_MGTeam", 2], ["OIA_TankPLatoon_AA", 1]]
+]];
+
 lzPractice = compile preprocessFileLineNumbers "lzpractice\lzPractice.sqf";
 lzPracticeCancel = compile preprocessFileLineNumbers "lzpractice\lzPracticeCancel.sqf";
 lzDialog = compile preprocessFileLineNumbers "lzpractice\lzDialog.sqf";

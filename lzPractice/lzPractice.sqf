@@ -2,69 +2,7 @@
 
 //Generates an extraction scenario randomly on the map. Friendly and enemy units will be placed first and made to engage each other. A suitable lz will be determined using bis_fnc_findsafepos. The helo will have to complete the mission within a given timeframe. The mission will start via a menu available on the nimitz. The player can select the type and number of helicopters being flown to the LZ, and how hot the LZ should be.
 
-/////////////////////////////////////////////////
-//Functions
-/////////////////////////////////////////////////
-
-//---fnc_unitDespawn checks for units within 20 meters of the delivery point and deletes them
-fnc_unitDespawn = {
-
-	params ["_taskName","_dialogArray"];
-	_despawned = 0;
-
-	while {_despawned < (count (missionNamespace getVariable ("masterUnitsList" + _taskName)))} do {
-		uisleep 5;
-		mkfDelete = [];
-		{
-			if ((_x distance (missionNamespace getVariable "lzpDropOff")) < 30 && (isNull objectParent _x)) then {
-				mkfDelete pushBack _x;
-				deleteVehicle _x;
-				_despawned = _despawned + 1;
-			};
-		}forEach (missionNamespace getVariable ("masterUnitsList" + _taskName));
-	};
-	missionNamespace setVariable ["notComplete" + _taskName, false];
-	_tempArray = missionNamespace getVariable "lzTasks";
-	_tempArray deleteAt (_tempArray find _dialogArray);
-	missionNamespace setVariable ["lzTasks", _tempArray];
-	missionNamespace setVariable ['masterUnitsList' + _taskName, nil];
-	missionNamespace setVariable ['notComplete' + _taskName, nil];
-	missionNamespace setVariable ['pickupList' + _taskName, nil];
-
-	[_taskName, "Succeeded", true] call BIS_fnc_taskSetState;
-	deleteMarker (_dialogArray select 2);
-
-	uisleep 10;
-	[_taskName] call BIS_fnc_deleteTask;
-};
-
-//---fnc_heloCheck -Checks for helos in the area around the lz and starts heloMon for  them
-fnc_heloCheck = {
-	params["_taskName", "_helosInUse", "_lzPos","_bluPos"];
-
-	while {missionNamespace getVariable ("notComplete" + _taskName)} do {
-		{
-			if !(_x in _helosInUse) then {
-				_helosInUse pushBack _x;
-				_x allowCrewInImmobile true;
-				[_x,_taskName,_lzPos,_bluPos] spawn heloMon;
-			};
-		}forEach (_lzPos nearEntities ["Helicopter", 400]);
-	};
-};
-
-//---fnc_Smoke -Spawns a green smoke every 65 seconds on the lz
-fnc_smoke = {
-	params ["_taskName","_lzPos"];
-
-	while {missionNamespace getVariable ("notComplete" + _taskName)} do {
-		"SmokeShellGreen" createVehicle _lzPos;
-		uisleep 65;
-	};
-};
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
+#include "functions.sqf"
 
 //---MAIN BODY
 params["_hueys","_stals","_diff","_caller"];
@@ -78,6 +16,7 @@ if(_hueys == 0 && _stals == 0) exitwith{};
 
 _taskName = str(taskIndex);
 taskIndex = taskIndex + 1;
+_opforSpawnTable = (missionNamespace getVariable "_opfSpawnTable") select _diff;
 _location = selectRandom locationList;
 _lzPos = [];
 _lzSearchPos = [];
@@ -93,7 +32,7 @@ while {(count _lzPos) == 0} do {
 while {_bluPos isEqualTo [] && _opfPos isEqualTo []} do {
 	_dir = random 359;
 	_bluPos = (_lzPos) getPos [(random 150)+50, _dir];
-	_opfPos = (_bluPos) getPos [(random 700)+200, _dir];
+	_opfPos = (_bluPos) getPos [(random 450)+300, _dir];
 	if ((surfaceIsWater _bluPos) || (surfaceIsWater _opfPos)) then {
 		_bluPos = [];
 		_opfPos = [];
@@ -125,26 +64,43 @@ missionNamespace setVariable ["lzTasks", _tempArray];
 
 //Create blufor groups based on the information passed by the gui
 _count = _hueys + (_stals * 3);
-_masterUnitsList = [];
+_bluforUnitsList = [];
 
 for "_i" from 1 to _count do {
-	_bluGroup = [_bluPos, WEST, ["B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F","B_Soldier_F"]] call BIS_fnc_spawnGroup;
-	_bluGroup deleteGroupWhenEmpty true;
+	_bluforGroup = [_bluPos, WEST, ["B_Soldier_SL_F","B_Soldier_F","B_Soldier_LAT_F","B_Medic_F","B_Soldier_A_F","B_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
+	_bluforGroup deleteGroupWhenEmpty true;
 	{
-		_masterUnitsList pushBack _x;
+		_bluforUnitsList pushBack _x;
 		_x allowDamage false;
-	}forEach (units _bluGroup);
+	}forEach (units _bluforGroup);
 
 };
 
-missionNamespace setVariable ["masterUnitsList" + _taskName, + _masterUnitsList]; //Used to compare against and delete from in case of unit death
-missionNamespace setVariable ["pickupList" + _taskName, + _masterUnitsList]; //Used by helos to know which units to pickup
-missionNamespace setVariable ["notComplete" + _taskName, true];
+//Create opfor groups based on the difficulty setting
+_opforUnitsList = [];
+{
+	for "_i" from 1 to (_x select 1) do {
+		_opforGroup = [_opfPos, EAST,_x select 0] call BIS_fnc_spawnGroup;
+		_opforGroup deleteGroupWhenEmpty true;
+		_wp = _opforGroup addWaypoint [_bluPos, 50];
+		_wp setWaypointType "Sentry";
+		{
+			_opforUnitsList pushBack _x;
+			_veh = assignedVehicle _x;
+			if (!(isNull _veh) && !(_veh in _opforUnitsList)) then {
+				_opforUnitsList pushBack _veh;
+			};
+		}forEach (units _opforGroup);
 
-//Define opfor compositions here based upon difficulty settings
+	};
+}forEach _opforSpawnTable;
 
+missionNamespace setVariable ["bluforUnitsList" + _taskName, + _bluforUnitsList]; //Used to compare against for mission completion
+missionNamespace setVariable ["opforUnitsList" + _taskName, + _opforUnitsList];
+missionNamespace setVariable ["pickupList" + _taskName, + _bluforUnitsList]; //Used by helos to know which units to pickup
+missionNamespace setVariable ["taskState" + _taskName, "Created"];
 
 _helosInUse = [];
-[_taskName, _dialogArray] spawn fnc_UnitDespawn;
+[_taskName, _dialogArray] spawn fnc_lzEnd;
 [_taskName, _helosInUse, _lzPos, _bluPos] spawn fnc_heloCheck;
 [_taskName, _lzPos] spawn fnc_smoke;

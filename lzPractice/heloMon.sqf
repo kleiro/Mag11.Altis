@@ -2,22 +2,7 @@
 //Moniters helicopter's altitude and adds waypoints to passed groups if the helo has landed
 //WP's are deleted if the helo takes off again
 
-/////////////////////////////////////////////////
-//Functions
-/////////////////////////////////////////////////
-
-//--fnc_moveOutUnit -Makes units move to the delivery position for deletion once out of the helo
-fnc_moveOutUnit = {
-	params["_man","_helo","_delPos"];
-	_man setVariable["moveOutUnit", 1];
-	waitUntil {isNull objectParent _man && _man getVariable ["arrived",false]};
-
-	[_man] join grpNull;
-	(group _man) move _delPos;
-};
-
-/////////////////////////////////////////////////
-
+#include "functions.sqf"
 
 //---MAIN BODY
 params ["_helo","_taskName","_lzPos","_bluPos"];
@@ -26,7 +11,7 @@ diag_log format ["***HeloMon OUTPUT: %1", _helo];
 _case = 0;
 _delPos = (missionNamespace getVariable "lzpDropOff");
 
-while {missionNamespace getVariable ("notComplete" + _taskName) && _case == 0} do {
+while {missionNamespace getVariable ("taskState" + _taskName) == "Created" && _case == 0} do {
 
 	//Check if helo is near the lz, landed, and not moving and has cargo space
 	if ((_helo distance _lzPos) <= 150 && ((getPosATL _helo) select 2) < .6 && (speed _helo) < 1 && (_helo emptyPositions "Cargo") > 0) then {
@@ -56,7 +41,7 @@ while {missionNamespace getVariable ("notComplete" + _taskName) && _case == 0} d
 			} else {
 
 				if (!(isPlayer _x) &&  (_x getVariable ["moveOutUnit", 0]) == 0)then {
-					[_x,_helo,_delPos] spawn fnc_moveOutUnit;
+					[_x,_helo,_delPos] spawn fnc_moveUnit;
 				};
 
 			};
