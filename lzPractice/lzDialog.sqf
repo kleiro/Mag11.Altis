@@ -1,6 +1,5 @@
 //lzDialog.sqf
 //Creates the dialog for lz practice
-params["_passed"];
 
 createDialog "lzDialog";
 

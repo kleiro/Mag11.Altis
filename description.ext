@@ -113,4 +113,4 @@ class CfgRemoteExec
 
 //--- R.Klein Dialogs
 #include "defines.hpp"
-#include "rKleinsDialogs.hpp"
+#include "lzPractice\lzPracticeDialogs.hpp"

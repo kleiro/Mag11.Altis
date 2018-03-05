@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14630.982,70.343033,16737.672};
-		dir[]={-0.51024818,-0.74450392,0.43072632};
-		up[]={-0.56891102,0.66758454,0.48024794};
-		aside[]={0.64509904,9.6182339e-007,0.76419282};
+		pos[]={14996.342,149.78043,16818.969};
+		dir[]={-0.88897777,-0.23438603,-0.39365953};
+		up[]={-0.21441153,0.97209966,-0.094945334};
+		aside[]={-0.40493158,-1.2131641e-006,0.91443956};
 	};
 };
 binarizationWanted=0;
@@ -5781,7 +5781,7 @@ class Mission
 			};
 			id=153;
 			type="rhsusf_CH53E_USMC_D";
-			atlOffset=0.25992775;
+			atlOffset=1.053112;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6779,7 +6779,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={2476.261,-0.00022888184,14159.282};
-			angle=6.2797627;
+			angle=6.2797642;
 			class Attributes
 			{
 				name="nimSafeZoneT";
