@@ -33,15 +33,15 @@ fnc_lzEnd = {
 	switch (missionNamespace getVariable ("taskState" + _taskName)) do {
 		case "Canceled" : {
 			//Delete blufor & opfor units & vehicles
-			{deleteVehicle _x;}forEach (missionNamespace getVariable ('bluforUnitsList' + _task));
-			{deleteVehicle _x;}forEach (missionNamespace getVariable ('opforUnitsList' + _task));
+			{deleteVehicle _x;}forEach (missionNamespace getVariable ('bluforUnitsList' + _taskName));
+			{deleteVehicle _x;}forEach (missionNamespace getVariable ('opforUnitsList' + _taskName));
 
 			//Delete task & marker
 			[_taskName, "Canceled", true] call BIS_fnc_taskSetState;
 		};
 		case "Succeeded" : {
 			//Delete opfor units & vehicles
-			{deleteVehicle _x;}forEach (missionNamespace getVariable ('opforUnitsList' + _task));
+			{deleteVehicle _x;}forEach (missionNamespace getVariable ('opforUnitsList' + _taskName));
 
 			//Delete task & marker
 			[_taskName, "Canceled", true] call BIS_fnc_taskSetState;
@@ -65,6 +65,12 @@ fnc_heloCheck = {
 	params["_taskName", "_helosInUse", "_lzPos","_bluPos"];
 
 	while {missionNamespace getVariable ("taskState" + _taskName) == "Created"} do {
+		if (missionNamespace getVariable ["heloInArea", false]) then {
+			{
+				missionNamespace setVariable ["heloInArea", true];
+			}forEach (_lzPos nearEntities ["Helicopter", 4000]);
+		};
+
 		{
 			if !(_x in _helosInUse) then {
 				_helosInUse pushBack _x;

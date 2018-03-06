@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=447;
+		nextID=720;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14996.342,149.78043,16818.969};
-		dir[]={-0.88897777,-0.23438603,-0.39365953};
-		up[]={-0.21441153,0.97209966,-0.094945334};
-		aside[]={-0.40493158,-1.2131641e-006,0.91443956};
+		pos[]={14848.436,68.351128,16751.834};
+		dir[]={-0.63834959,-0.47173998,-0.60842997};
+		up[]={-0.34153455,0.88165975,-0.32552361};
+		aside[]={-0.69001293,-1.8014398e-006,0.72394037};
 	};
 };
 binarizationWanted=0;
@@ -5781,7 +5781,7 @@ class Mission
 			};
 			id=153;
 			type="rhsusf_CH53E_USMC_D";
-			atlOffset=1.053112;
+			atlOffset=0.25992775;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6779,7 +6779,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={2476.261,-0.00022888184,14159.282};
-			angle=6.2797642;
+			angle=6.2797627;
 			class Attributes
 			{
 				name="nimSafeZoneT";

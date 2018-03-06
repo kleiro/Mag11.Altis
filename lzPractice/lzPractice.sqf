@@ -16,7 +16,7 @@ if(_hueys == 0 && _stals == 0) exitwith{};
 
 _taskName = str(taskIndex);
 taskIndex = taskIndex + 1;
-_opforSpawnTable = (missionNamespace getVariable "_opfSpawnTable") select _diff;
+_opforSpawnTable = (missionNamespace getVariable "opforSpawnTable") select _diff;
 _location = selectRandom locationList;
 _lzPos = [];
 _lzSearchPos = [];
@@ -72,23 +72,40 @@ for "_i" from 1 to _count do {
 	{
 		_bluforUnitsList pushBack _x;
 		_x allowDamage false;
+		_x setSkill ["SpotDistance", 1];
+		_x setSKill ["SpotTime", .95];
 	}forEach (units _bluforGroup);
 
 };
 
 //Create opfor groups based on the difficulty setting
+
+//Just add vehicles by themselves and spawn crews for them. Use isKindof
+//May want to randomize the spawn locations slightly, possibly with getDir[5,_dir+10]
 _opforUnitsList = [];
 {
 	for "_i" from 1 to (_x select 1) do {
-		_opforGroup = [_opfPos, EAST,_x select 0] call BIS_fnc_spawnGroup;
+		_opforGroup = [_opfPos, EAST,(_x select 0)] call BIS_fnc_spawnGroup;
 		_opforGroup deleteGroupWhenEmpty true;
 		_wp = _opforGroup addWaypoint [_bluPos, 50];
 		_wp setWaypointType "Sentry";
 		{
 			_opforUnitsList pushBack _x;
+			_x setSkill ["SpotDistance", 1];
+			_x setSkill ["SpotTime", 1];
+			_x addEventHandler ["handleDamage", {
+				if (!(missionNamespace getVariable ["heloInArea", false])) then {
+					(_this select 0) setHitPointDamage [_this select 7, 0];
+				};
+			}];
 			_veh = assignedVehicle _x;
 			if (!(isNull _veh) && !(_veh in _opforUnitsList)) then {
 				_opforUnitsList pushBack _veh;
+				_veh addEventHandler ["handleDamage", {
+					if (!(missionNamespace getVariable ["heloInArea", false])) then {
+						(_this select 0) setHitPointDamage [_this select 7, 0];
+					};
+				}];
 			};
 		}forEach (units _opforGroup);
 

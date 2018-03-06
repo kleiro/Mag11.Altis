@@ -55,16 +55,17 @@ missionNamespace setVariable ["lzpNames",[
 
 //OpFor spawn table for each difficulty
 missionNamespace setVariable ["opforSpawnTable", [
+//Cold
+[],
 //Mild
-[["OIA_InfSquad", 3]],
+[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 4]],
 //Hot
-[["OIA_InfSquad", 4], ["OIA_InfTeam_AA", 1], ["OIA_MotInf_MGTeam", 2]],
+[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA"), 1], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Mechanized" >> "OIA_MechInfSquad"), 2]],
 //We gon Die
-[["OIA_InfSquad", 4], ["OIA_MotInf_MGTeam", 2], ["OIA_TankPLatoon_AA", 1]]
+[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Mechanized" >> "OIA_MechInfSquad"), 2], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Armored" >> "OIA_TankPLatoon_AA"), 1]]
 ]];
 
 lzPractice = compile preprocessFileLineNumbers "lzpractice\lzPractice.sqf";
-lzPracticeCancel = compile preprocessFileLineNumbers "lzpractice\lzPracticeCancel.sqf";
 lzDialog = compile preprocessFileLineNumbers "lzpractice\lzDialog.sqf";
 heloMon = compile preprocessFileLineNumbers "lzpractice\heloMon.sqf";
 damagedHelo = compile preprocessFileLineNumbers "lzPractice\damagedHeloPractice.sqf";
