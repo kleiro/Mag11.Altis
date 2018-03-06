@@ -84,32 +84,45 @@ for "_i" from 1 to _count do {
 //May want to randomize the spawn locations slightly, possibly with getDir[5,_dir+10]
 _opforUnitsList = [];
 {
-	for "_i" from 1 to (_x select 1) do {
-		_opforGroup = [_opfPos, EAST,(_x select 0)] call BIS_fnc_spawnGroup;
-		_opforGroup deleteGroupWhenEmpty true;
-		_wp = _opforGroup addWaypoint [_bluPos, 50];
-		_wp setWaypointType "Sentry";
-		{
-			_opforUnitsList pushBack _x;
-			_x setSkill ["SpotDistance", 1];
-			_x setSkill ["SpotTime", 1];
-			_x addEventHandler ["handleDamage", {
-				if (!(missionNamespace getVariable ["heloInArea", false])) then {
-					(_this select 0) setHitPointDamage [_this select 7, 0];
-				};
-			}];
-			_veh = assignedVehicle _x;
-			if (!(isNull _veh) && !(_veh in _opforUnitsList)) then {
-				_opforUnitsList pushBack _veh;
-				_veh addEventHandler ["handleDamage", {
-					if (!(missionNamespace getVariable ["heloInArea", false])) then {
-						(_this select 0) setHitPointDamage [_this select 7, 0];
-					};
-				}];
+	switch (typeName (_x select 0)) do {
+		case ("Config") : {
+			for "_i" from 1 to (_x select 1) do {
+				_opforGroup = [_opfPos, EAST,(_x select 0)] call BIS_fnc_spawnGroup;
+				_opforGroup deleteGroupWhenEmpty true;
+				_wp = _opforGroup addWaypoint [_bluPos, 50];
+				_wp setWaypointType "Sentry";
+				{
+					_opforUnitsList pushBack _x;
+					_x setSkill ["SpotDistance", 1];
+					_x setSkill ["SpotTime", 1];
+				}forEach (units _opforGroup);
 			};
-		}forEach (units _opforGroup);
+		};
 
+		case ("Array") : {
+			{
+				_veh = createVehicle [_x, _opfPos, [], 20];
+				createVehicleCrew _veh;
+				(group(driver _veh)) deleteGroupWhenEmpty true;
+				_opforUnitsList pushBack _veh;
+				_opforUnitsList append (crew _veh);
+				_dir = _bluPos getDir _opfPos;
+
+				switch (true) do {
+					case (_x isKindof "Car") : {
+						_wp = (group(driver _veh)) addWaypoint [(_bluPos getPos [(random 75) + 75, (random 30) + (_dir - 15)]]), 10];
+						_wp setWaypointType "Hold";
+					};
+
+					case (_x isKindof "APC") : {
+						_wp = (group(driver _veh)) addWaypoint [(_bluPos getPos [(random 50) + 150, (random 60) + (_dir - 30)]]), 10];
+						_wp setWaypointType "Hold";
+					};
+				};
+			}forEach (_x select 0);
+		};
 	};
+
 }forEach _opforSpawnTable;
 
 missionNamespace setVariable ["bluforUnitsList" + _taskName, + _bluforUnitsList]; //Used to compare against for mission completion

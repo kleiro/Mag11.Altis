@@ -50,19 +50,33 @@ missionNamespace setVariable ["lzpNames",[
 "Tauri",
 "Proxima",
 "Milky Way",
-"Kevin Bacon"
+"Kevin Bacon",
+"McDonalds",
+"Waffle House",
+"Subway",
+"Qdoba",
+"Chipotle",
+"Jersey Mikes",
+"Skittles",
+"KitKat",
+"Skid Row",
+"AYYLMAO"
 ]];
 
 //OpFor spawn table for each difficulty
+//CfgGroups must be in their own arrays. Vehicles should be entered into one single array.
 missionNamespace setVariable ["opforSpawnTable", [
 //Cold
 [],
 //Mild
 [[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 4]],
 //Hot
-[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA"), 1], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Mechanized" >> "OIA_MechInfSquad"), 2]],
+[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5],
+[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA"), 1],
+[["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F"], 1]],
 //We gon Die
-[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Mechanized" >> "OIA_MechInfSquad"), 2], [(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Armored" >> "OIA_TankPLatoon_AA"), 1]]
+[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5],
+[["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F","O_APC_Tracked_02_AA_F"], 1],
 ]];
 
 lzPractice = compile preprocessFileLineNumbers "lzpractice\lzPractice.sqf";
