@@ -82,7 +82,7 @@ if !(safeList isEqualTo _tList) then {
 							safeList pushBackUnique _x;
 							_x removeAllEventHandlers "Local";
 							_x addEventHandler ["local", {
-								if !((_this select 1)) then {
+								if (!(_this select 1) && !(isNull (_this select 0))) then {
 									[(_this select 0)] remoteExec ["localityChange", (_this select 0)];
 								};
 							}];

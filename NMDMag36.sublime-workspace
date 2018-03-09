@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"opfor",
+				"opforUnitsList"
+			],
+			[
+				"bluf",
+				"bluforUnitsList"
+			],
+			[
+				"setTrigg",
+				"setTriggerStatements"
+			],
+			[
+				"_opfor",
+				"_opforTrigger"
+			],
+			[
 				"_b",
 				"_bluPos"
 			],
@@ -227,6 +243,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "lzPractice/lzPracticeInclude.hpp",
+			"settings":
+			{
+				"buffer_size": 2261,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lzPractice/lzPractice.sqf",
+			"settings":
+			{
+				"buffer_size": 4879,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lzPractice/heloMon.sqf",
+			"settings":
+			{
+				"buffer_size": 3077,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lzPractice/functions.sqf",
+			"settings":
+			{
+				"buffer_size": 5535,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -252,14 +300,22 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Robert/Desktop/NMDMag36.Altis/heloMon.sqf",
-		"/C/Users/Robert/Desktop/NMDMag36.Altis/lzPractice.sqf",
-		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzDialog.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPractice/functionsOLD.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPractice/functions.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/initServer.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/nimitzSafeZone/nimitzSafeZoneInclude.hpp",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPractice/lzDialog.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/air2air/Air2AirInclude.hpp",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/onPlayerRespawn.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPractice/lzPracticeInclude.hpp",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/Air2AirInclude.hpp",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/description.ext",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPracticeInclude.hpp",
 		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPractice.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/heloMon.sqf",
+		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzDialog.sqf",
 		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/lzPracticeCancel.sqf",
 		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/rKleinsDialogs.hpp",
-		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/initServer.sqf",
-		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/description.ext",
 		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/damagedHeloPractice.sqf",
 		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/defines.hpp",
 		"/C/Users/kleir/Documents/Arma 3 - Other Profiles/[Capt]%20R%2eKlein/mpmissions/NMDMag36.Altis/dialogs.hpp",
@@ -361,6 +417,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"disableAI",
+			"opforSpawnTable",
+			"defines",
 			"allowDamage",
 			"lzPracticeList",
 			"(str _lzPracticeNum)",
@@ -403,6 +462,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"enableAI",
 			"_taskName",
 			"(missionNamespace getVariable \"lzpDropOff\")",
 			"(missionNamespace getVariable \"lzpDropOff\")\n(missionNamespace getVariable \"lzpDropOff\")\n(missionNamespace getVariable \"lzpDropOff\")",
@@ -421,6 +481,312 @@
 	},
 	"groups":
 	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "lzPractice/lzPracticeInclude.hpp",
+					"settings":
+					{
+						"buffer_size": 2261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1224,
+								1224
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Lang C++ Arma/cpp.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lzPractice/lzPractice.sqf",
+					"settings":
+					{
+						"buffer_size": 4879,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2917,
+								2917
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1440.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lzPractice/heloMon.sqf",
+					"settings":
+					{
+						"buffer_size": 3077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1909,
+								1450
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 224.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "lzPractice/functions.sqf",
+					"settings":
+					{
+						"buffer_size": 5535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5413,
+								5413
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Bin/fsmEditor/SQF.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1730.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
 		{
 			"sheets":
 			[
@@ -444,11 +810,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.544876088413,
 			1.0
 		],
 		"rows":

@@ -1,7 +1,7 @@
 //lzPracticeInclude
 //To start lzPractice, lzDialog must be spawned
 
-locationList = nearestLocations [(getArray (configFile >> "CfgWorlds" >> worldName >> "CenterPosition")), ["NameVillage","NameCity","NameCityCapital"], 30000];
+locationList = nearestLocations [(getArray (configFile >> "CfgWorlds" >> worldName >> "CenterPosition")), ["NameVillage","NameCity","NameCityCapital"], 40000];
 taskIndex = 100;
 missionNamespace setVariable["lzTasks",[]];
 missionNamespace setVariable ["lzpDropOff",[14169.9,16264.5,0]];
@@ -62,24 +62,26 @@ missionNamespace setVariable ["lzpNames",[
 "Skid Row",
 "AYYLMAO"
 ]];
-
+//Blufor spawn table
+missionNamespace setVariable ["bluforSpawnTable", ["B_Soldier_SL_F","B_Soldier_AT_F","B_Soldier_LAT_F","B_Medic_F","B_Soldier_A_F","B_Soldier_AR_F"]];
 //OpFor spawn table for each difficulty
 //CfgGroups must be in their own arrays. Vehicles should be entered into one single array.
-missionNamespace setVariable ["opforSpawnTable", [
-//Cold
-[],
-//Mild
-[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 4]],
-//Hot
-[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5],
-[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA"), 1],
-[["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F"], 1]],
-//We gon Die
-[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5],
-[["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F","O_APC_Tracked_02_AA_F"], 1],
-]];
-
-lzPractice = compile preprocessFileLineNumbers "lzpractice\lzPractice.sqf";
-lzDialog = compile preprocessFileLineNumbers "lzpractice\lzDialog.sqf";
-heloMon = compile preprocessFileLineNumbers "lzpractice\heloMon.sqf";
-damagedHelo = compile preprocessFileLineNumbers "lzPractice\damagedHeloPractice.sqf";
+missionNamespace setVariable ["opforSpawnTable",
+	[
+		//Cold
+		[],
+		//Mild
+		[[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 4]],
+		//Hot
+		[
+			[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5],
+			[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA"), 1],
+			[["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F"], 1]
+		],
+		//We gon Die
+		[
+			[(configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >>"OIA_InfSquad"), 5],
+			[["O_MRAP_02_hmg_F","O_MRAP_02_hmg_F","O_APC_Tracked_02_AA_F"], 1]
+		]
+	]
+];

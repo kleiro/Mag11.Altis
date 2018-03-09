@@ -22,8 +22,7 @@ if ( !isMultiplayer ) then {
 
 timer = 1;
 timer1 = 1;
-DHP = 1;
 
-[] spawn respawnNimVeh;
+[] spawn psq_fnc_respawnNimVeh;
 
 diag_log "***InitServer Complete";

@@ -24,7 +24,7 @@ $[
 
 
 
-class lzDialog {
+class lzGUI {
 	idd = 69;
 	movingEnable = false;
 	enableSimulation = true;

@@ -1,8 +1,8 @@
 //nimitzSafeZoneInclude.hpp
 //Requires a trigger (type none) with the following activation and statements:
-//triggerActivation["Any Player","Present",true], triggerStatements["timer ==1", "[thisList] call nimitzSafeZone;", "timer1=1;"]
+//triggerActivation["Any Player","Present",true], triggerStatements["timer ==1", "[thisList] call psq_fnc_nimitzSafeZone;", "timer1=1;"]
 //timer can be initialized in initServer
-//After the timer line in 'initServer', {[]spawn respawnNimVeh;} must be placed
+//After the timer line in 'initServer', {[]spawn psq_fnc_respawnNimVeh;} must be placed
 
 /*Game logic must be placed with the following code:
 
@@ -22,6 +22,3 @@ nimObj = [[],[],[],[]];//nimObj nested array: [[objname1,objname2],[objtype1,obj
 iterList = [[],[]]; //List of objects that has been in the safe zone, but not for 5 seconds, format: Object, Iterations in, Iterations passed
 safeList = []; //List of objects previously in safe zone used in nimitzSafeZone script
 
-respawnNimVeh = compile preprocessFileLineNumbers "nimitzSafeZone\respawnNimVeh.sqf";
-nimitzSafeZone = compile preprocessFileLineNumbers "nimitzSafeZone\NimitzSafeZone.sqf";
-localityChange = compile preprocessFileLineNumbers "nimitzSafeZone\LocalityChange.sqf";

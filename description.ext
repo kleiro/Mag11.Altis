@@ -34,6 +34,7 @@ enableDebugConsole = 1;
 #include "nmd\modules\map\include.hpp"
 #include "nmd\modules\vehicles\include.hpp"
 
+
 //--- Functions
 class CfgFunctions
 {
@@ -41,6 +42,9 @@ class CfgFunctions
 	#include "nmd\modules\admin\cfgFunctions.hpp"
 	#include "nmd\modules\map\cfgFunctions.hpp"
 	#include "nmd\modules\vehicles\cfgFunctions.hpp"
+	#include "lzPractice\LZPracticeCfgFunctions.hpp"
+	#include "air2air\Air2AirCfgFunctions.hpp"
+	#include "nimitzSafeZone\NimitzCfgFunctions.hpp"
 };
 
 //--- Params
@@ -107,10 +111,13 @@ class CfgRemoteExec
 		mode = 2;
 		jip = 1;
 		class localityChange {allowedTargets = 0;};
-		class lzPractice {allowedTargets = 2;};
+		class psq_fnc_lzPractice {allowedTargets = 2;};
+		class psq_fnc_lzGUI {allowedTargets = 0;};
+		class psq_fnc_a2aGUI {allowedTargets = 0;};
 	};
 };
 
 //--- R.Klein Dialogs
 #include "defines.hpp"
 #include "lzPractice\lzPracticeDialogs.hpp"
+#include "air2air\air2airDialogs.hpp"

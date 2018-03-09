@@ -1,7 +1,7 @@
-//lzDialog.sqf
+//lzGUI
 //Creates the dialog for lz practice
 
-createDialog "lzDialog";
+createDialog "lzGUI";
 
 //add numbers to uh1y combo box
 for "_i" from 0 to 4 do {
@@ -48,5 +48,5 @@ buttonSetAction[2400, "
 	_stals = lbCurSel 2101;
 	_diff = lbCurSel 2102;
 	closeDialog 1;
-	[_hueys,_stals,_diff,player] remoteExec ['lzPractice', 2, false]
+	[_hueys,_stals,_diff,player] remoteExec ['psq_fnc_lzPractice', 2, false]
 "];
