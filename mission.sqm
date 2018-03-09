@@ -22765,7 +22765,7 @@ class Mission
 			};
 			id=730;
 			type="FIR_MP_Laptop";
-			atlOffset=0.81322861;
+			atlOffset=0.81318474;
 			class CustomAttributes
 			{
 				class Attribute0
