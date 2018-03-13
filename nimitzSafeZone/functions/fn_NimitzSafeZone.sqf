@@ -5,95 +5,99 @@
 
 if !(isServer) exitWith {};
 
-timer = 0;
+params ["_nimitz"];
 
-params ["_tList"];
-safeList sort true;
-_tList sort true;
+_oldList = [];
+_newIterList = [[],[]];
 
-if !(safeList isEqualTo _tList) then {
+while {true} do {
+	_oldList sort true;
+	_newList = [_nimitz] call psq_fnc_unitsOnNimitz;
 
-	//Check for objects that have left the safe zone (_tList) compared to the last check (safeList) and enable damage on them (must be enabled locally hence remoteExec)
-	_safeListRemoval = [];
-	{
-		_object = _x;
-		if !(_object in _tList) then {
-			_crew = fullCrew _object;
-			{
-				_man = _x select 0;
-				[_man, true] remoteExec ["allowDamage", _man];
-				_safeListRemoval pushBack _man;
-				_man setVariable ["enableDamage", true];
-			}forEach _crew;
+	if !(_oldList isEqualTo _newList) then {
 
-			[_x, true] remoteExec ["allowDamage", _x];
-			_safeListRemoval pushBack _x;
-			_x setVariable ["enableDamage", true];
-		};
+		//Check for objects that have left the safe zone (_newList) compared to the last check (_oldList) and enable damage on them (must be enabled locally hence remoteExec)
+		_oldListRemoval = [];
+		{
+			_object = _x;
+			if !(_object in _newList) then {
+				_crew = fullCrew _object;
+				{
+					_man = _x select 0;
+					[_man, true] remoteExec ["allowDamage", _man];
+					_oldListRemoval pushBack _man;
+					_man setVariable ["enableDamage", true];
+				}forEach _crew;
 
-
-	}forEach safeList;
-
-	//Delete objects that have left the safe zone from safeList
-	{
-		safeList deleteAt (safeList find _x);
-	}forEach _safeListRemoval;
+				[_x, true] remoteExec ["allowDamage", _x];
+				_oldListRemoval pushBack _x;
+				_x setVariable ["enableDamage", true];
+			};
 
 
-	//Check for objects that have ENTERED the safe zone (_tList) compared to what is currently inside (safeList) and disable damage on them after 5 iterations
-	//If the object is a man, then damage must be disabled immediately
-	_iterList = +iterList;
-	iterList = [[],[]];
-	{
-		_object = _x;
-		if !(_object in safeList) then {
-			if (_object isKindOf "Man") then {
+		}forEach _oldList;
 
-				[_x, false] remoteExec ["allowDamage", _x];
-				safeList pushBackUnique _x;
-				_x setVariable ["enableDamage", false];
+		//Delete objects that have left the safe zone from _oldList
+		{
+			_oldList deleteAt (_oldList find _x);
+		}forEach _oldListRemoval;
 
-			} else {
 
-				if !(_object in (_iterList select 0)) then {
-					(iterList select 0) pushBack _object;
-					(iterList select 1) pushBack 1;
+		//Check for objects that have ENTERED the safe zone (_newList) compared to what is currently inside (_oldList) and disable damage on them after 5 iterations
+		//If the object is a man, then damage must be disabled immediately
+		_oldIterList = +_newIterList;
+		_newIterList = [[],[]];
+		{
+			_object = _x;
+			if !(_object in _oldList) then {
+				if (_object isKindOf "Man") then {
+
+					[_x, false] remoteExec ["allowDamage", _x];
+					_oldList pushBackUnique _x;
+					_x setVariable ["enableDamage", false];
 
 				} else {
 
-					_index = (_iterList select 0) find _object;
+					if !(_object in (_oldIterList select 0)) then {
+						(_newIterList select 0) pushBack _object;
+						(_newIterList select 1) pushBack 1;
 
-					if (((_iterList select 1) select _index) < 5) then {
+					} else {
 
-						_iteration = ((_iterList select 1) select _index) + 1;
+						_index = (_oldIterList select 0) find _object;
 
-						if (_iteration > 4) then {
+						if (((_oldIterList select 1) select _index) < 5) then {
 
-							_x setVariable ["enableDamage", false];
-							_crew = fullCrew _object;
-							{
-								_man = _x select 0;
-								[_man, false] remoteExec ["allowDamage", _man];
-								safeList pushBackUnique _man;
-								_man setVariable ["enableDamage", false];
-							}forEach _crew;
+							_iteration = ((_oldIterList select 1) select _index) + 1;
 
-							[_x, false] remoteExec ["allowDamage", _x];
-							safeList pushBackUnique _x;
-							_x removeAllEventHandlers "Local";
-							_x addEventHandler ["local", {
-								if (!(_this select 1) && !(isNull (_this select 0))) then {
-									[(_this select 0)] remoteExec ["localityChange", (_this select 0)];
-								};
-							}];
-						} else {
-							(iterList select 0) pushBack _object;
-							(iterList select 1) pushBack _iteration;
+							if (_iteration > 4) then {
+
+								_x setVariable ["enableDamage", false];
+								_crew = fullCrew _object;
+								{
+									_man = _x select 0;
+									[_man, false] remoteExec ["allowDamage", _man];
+									_oldList pushBackUnique _man;
+									_man setVariable ["enableDamage", false];
+								}forEach _crew;
+
+								[_x, false] remoteExec ["allowDamage", _x];
+								_oldList pushBackUnique _x;
+								_x removeAllEventHandlers "Local";
+								_x addEventHandler ["local", {
+									if (!(_this select 1) && !(isNull (_this select 0))) then {
+										[(_this select 0)] remoteExec ["localityChange", (_this select 0)];
+									};
+								}];
+							} else {
+								(_newIterList select 0) pushBack _object;
+								(_newIterList select 1) pushBack _iteration;
+							};
 						};
 					};
 				};
 			};
-		};
-	}forEach _tList;
-
+		}forEach _newList;
+	};
+	uisleep 1;
 };

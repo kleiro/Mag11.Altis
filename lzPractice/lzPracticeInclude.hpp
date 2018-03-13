@@ -1,7 +1,6 @@
 //lzPracticeInclude
 //To start lzPractice, lzDialog must be spawned
 
-locationList = nearestLocations [(getArray (configFile >> "CfgWorlds" >> worldName >> "CenterPosition")), ["NameVillage","NameCity","NameCityCapital"], 40000];
 taskIndex = 100;
 missionNamespace setVariable["lzTasks",[]];
 missionNamespace setVariable ["lzpDropOff",[14169.9,16264.5,0]];

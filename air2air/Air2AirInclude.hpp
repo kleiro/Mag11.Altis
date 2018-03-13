@@ -1,7 +1,5 @@
 //Air2AirInclude
-//Requires a trigger (type none) with the following activation and statements:
-//triggerActivation["Any Player","Present",true], triggerStatements["timer ==1", "[thisList] call a2aRange;", "timer1=1;"]
-//timer can be initialized in initServer
+//Requires a marker to be placed. Recommended dimensions are 1500x1500m
 
 a2aTargets =[[],[]]; //List of objects concerning the a2a zone, arrays: Player, Enemy Aircraft for Player
 
@@ -23,3 +21,5 @@ missionNameSpace setVariable ["EACSpawnTable", [
 ]];
 
 missionNameSpace setVariable ["EACSet", +(missionNameSpace getVariable "EACSpawnTable")];
+
+["a2aMkr", 2000] spawn psq_fnc_a2aRange; //Marker name, altitude of marker (air range will be +/- 500m of altitude)

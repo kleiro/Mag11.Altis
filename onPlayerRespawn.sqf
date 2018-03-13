@@ -10,4 +10,4 @@ if (((getPosWorld _unit) distance2D (getPosWorld nimitz)) < 200) then {
 	_unit setPosWorld [2486.136,14129.804,6.6];
 };
 
-//{_x setPosWorld [2486.136,14129.804,6.6]}foreach thisList;
+#include "race\racePlayerLocalInclude.hpp"

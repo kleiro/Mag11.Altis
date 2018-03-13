@@ -8,6 +8,6 @@ class PSQ_a2a {
 		class a2aDestroyed;
 		class a2aGUI;
 		class a2aKilled;
-		class air2airRange;
+		class a2aRange;
 	};
 };

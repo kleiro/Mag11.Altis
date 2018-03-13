@@ -1,0 +1,646 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, DnA Race Manager">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"Init"};
+item1[] = {"Server",4,218,-175.000000,-125.000000,-75.000000,-75.000000,0.000000,"Server"};
+item2[] = {"Setup",2,250,-175.000000,-50.000000,-75.000000,0.000000,0.000000,"Setup"};
+item3[] = {"Wait",4,218,-175.000000,25.000000,-75.000000,75.000000,0.000000,"Wait"};
+item4[] = {"Client",4,218,75.000000,-125.000000,175.000000,-75.000000,1.000000,"Client"};
+item5[] = {"Setup_1",2,4346,75.000000,-50.000000,175.000000,0.000000,0.000000,"Setup"};
+item6[] = {"Wait",4,218,75.000000,25.000000,175.000000,75.000000,0.000000,"Wait"};
+item7[] = {"Set_Countdown",2,250,-175.000000,100.000000,-75.000000,150.000000,0.000000,"Set Countdown"};
+item8[] = {"Countdown",2,250,75.000000,100.000000,175.000000,150.000000,0.000000,"Countdown"};
+item9[] = {"Wait_Countdown",4,218,75.000000,175.000000,175.000000,225.000000,0.000000,"Wait" \n "Countdown"};
+item10[] = {"Race",2,250,75.000000,250.000000,175.000000,300.000000,0.000000,"Race"};
+item11[] = {"_",8,218,75.000000,325.000000,175.000000,375.000000,0.000000,""};
+item12[] = {"",7,210,496.000000,396.000000,504.000000,404.000000,0.000000,""};
+item13[] = {"Finished",4,218,-175.000000,175.000000,-75.000000,225.000000,0.000000,"Finished"};
+item14[] = {"End",1,250,-175.000000,250.000000,-75.000000,300.000000,0.000000,"End"};
+item15[] = {"",7,210,371.000000,571.000000,379.000000,579.000000,0.000000,""};
+item16[] = {"Setup_Stage",2,250,200.000000,325.000000,300.000000,375.000000,0.000000,"Setup Stage"};
+item17[] = {"",7,210,246.000000,571.000000,254.000000,579.000000,0.000000,""};
+item18[] = {"",7,210,371.000000,396.000000,379.000000,404.000000,0.000000,""};
+item19[] = {"Is_Next_Stage",4,218,200.000000,425.000000,300.000000,475.000000,0.000000,"Is Next Stage"};
+item20[] = {"Clear_Stage",4,218,325.000000,325.000000,425.000000,375.000000,0.000000,"Clear" \n "Stage"};
+item21[] = {"",7,210,121.000000,571.000000,129.000000,579.000000,0.000000,""};
+item22[] = {"Next_Stage",2,250,200.000000,500.000000,300.000000,550.000000,0.000000,"Next Stage"};
+item23[] = {"",7,210,246.000000,396.000000,254.000000,404.000000,0.000000,""};
+item24[] = {"Is_Next_Lap",4,218,325.000000,425.000000,425.000000,475.000000,1.000000,"Is Next Lap"};
+item25[] = {"Next_Lap",2,250,325.000000,500.000000,425.000000,550.000000,0.000000,"Next Lap"};
+item26[] = {"Finish",4,218,450.000000,425.000000,550.000000,475.000000,2.000000,"Finish"};
+item27[] = {"End_1",1,250,450.000000,500.000000,550.000000,550.000000,0.000000,"End"};
+item28[] = {"Stage_Cleared",2,250,450.000000,325.000000,550.000000,375.000000,0.000000,"Stage" \n "Cleared"};
+link0[] = {0,1};
+link1[] = {0,4};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {3,7};
+link5[] = {4,5};
+link6[] = {5,6};
+link7[] = {6,8};
+link8[] = {7,13};
+link9[] = {8,9};
+link10[] = {9,10};
+link11[] = {10,11};
+link12[] = {11,16};
+link13[] = {12,18};
+link14[] = {12,26};
+link15[] = {13,14};
+link16[] = {15,17};
+link17[] = {16,20};
+link18[] = {17,21};
+link19[] = {18,23};
+link20[] = {18,24};
+link21[] = {19,22};
+link22[] = {20,28};
+link23[] = {21,11};
+link24[] = {22,17};
+link25[] = {23,19};
+link26[] = {24,25};
+link27[] = {25,15};
+link28[] = {26,27};
+link29[] = {28,12};
+globals[] = {0.000000,0,0,0,0,640,480,1,60,6316128,1,-212.092499,691.062378,504.450775,-166.844757,1175,884,1};
+window[] = {2,-1,-1,-1,-1,1035,-25,1875,6,3,1193};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "DnA Race Manager";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private ""_laps"";" \n
+                         "DNA_race_laps = [ _this, 0, 1, [0] ] call BIS_fnc_param;" \n
+                         "" \n
+                         "DNA_race_manager = true;" \n
+                         "missionNamespace setVariable [""activeRace"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Client">*/
+                                class Client
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="Setup_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!isNil ""DNA_race_serverInit"" && (vehicle player) isKindOf 'kart_01_base_f' && (vehicle Player) inArea kartStartTrigger)" \n
+                                         "||" \n
+                                         "{ !isServer && !isNull player }"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Server">*/
+                                class Server
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Setup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isServer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Setup">*/
+                class Setup
+                {
+                        name = "Setup";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"//--- Execute client if !Dedicated" \n
+                         "if !( isDedicated ) then { DNA_race_laps spawn DNA_fnc_raceManager };" \n
+                         "" \n
+                         "//--- Wait before countdown" \n
+                         "private ""_time"";" \n
+                         "_time = time + 10;" \n
+                         "" \n
+                         "//--- Mark as setup" \n
+                         "DNA_race_finished = nil;" \n
+                         "publicVariable ""DNA_race_finished"";" \n
+                         "DNA_race_serverInit = true;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wait">*/
+                                class Wait
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="Set_Countdown";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Setup_1">*/
+                class Setup_1
+                {
+                        name = "Setup_1";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"//--- Get all race marker positions" \n
+                         "DNA_race_stages = [];" \n
+                         "" \n
+                         "private ""_markerIndex"";" \n
+                         "_markerIndex = 1;" \n
+                         "while { str getMarkerPos ( format [ ""DNA_race_%1"", _markerIndex ] ) != ""[0,0,0]"" } do {" \n
+                         "" \n
+                         "	//--- Push position to array" \n
+                         "	[ DNA_race_stages, getMarkerPos ( format [ ""DNA_race_%1"", _markerIndex ] ) ] call BIS_fnc_arrayPush;" \n
+                         "	" \n
+                         "	//--- Increment" \n
+                         "	_markerIndex = _markerIndex + 1;" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "//--- Setup vehicle" \n
+                         "0 = [] spawn {" \n
+                         "" \n
+                         "	waitUntil { local vehicle player };" \n
+                         "	vehicle player setFuel 0;" \n
+                         "	vehicle player lock true;" \n
+                         "	vehicle player allowDamage false;" \n
+                         "	player allowDamage false;" \n
+                         "" \n
+                         "	//--- Add flip action" \n
+                         "	vehicle player addAction [ ""<t color='#E6731A'>Flip Vehicle</t>"", {" \n
+                         "" \n
+                         "		_vehicle = _this select 0;" \n
+                         "		_pos = getPos _vehicle;" \n
+                         "		_vehicle setPos [ _pos select 0, _pos select 1, _pos select 2 ];" \n
+                         "" \n
+                         "	}, nil, 1.5, true, true, """", ""alive _target && !canmove _target && count crew _target == 0"" ];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "//--- Create wait task" \n
+                         "[" \n
+                         "	""DNA_race_wait""," \n
+                         "	player," \n
+                         "	[" \n
+                         "		( localize ""STR_A3_campaign_b_m05_task02_title"" ) + "".""," \n
+                         "		localize ""STR_A3_campaign_b_m05_task02_title""," \n
+                         "		localize ""STR_A3_campaign_c_m02_task_marker_awaitorders""" \n
+                         "	]," \n
+                         "	getPos vehicle player," \n
+                         "	true," \n
+                         "	-1," \n
+                         "	false," \n
+                         "	false" \n
+                         "] call BIS_fnc_setTask;" \n
+                         "" \n
+                         "//--- 3D Icon Visual" \n
+                         "setGroupIconsVisible [ false, true ];" \n
+                         "" \n
+                         "createCenter CIVILIAN;" \n
+                         "DNA_race_iconGroup = createGroup CIVILIAN;" \n
+                         "DNA_race_iconGroup addGroupIcon [ ""badge"", [ 0, 0 ] ];" \n
+                         "DNA_race_iconGroup setGroupIconParams [ [ 0, 0, 0, 0 ], """", 0, false ];" \n
+                         "" \n
+                         "DNA_race_icon = DNA_race_iconGroup createUnit [ ""Logic"", [ 0, 0, 0 ], [], 0, ""NONE"" ];" \n
+                         "DNA_race_icon enableSimulation true;" \n
+                         "DNA_race_icon hideObject true;" \n
+                         "" \n
+                         "//--- Race variables" \n
+                         "DNA_race_currentStage = 0;" \n
+                         "DNA_race_currentLap = 1;" \n
+                         "" \n
+                         "//--- Timer" \n
+                         "private ""_rscLayer"";" \n
+                         "_rscLayer = ""Rsc_DNA_race_timer"" call BIS_fnc_rscLayer;" \n
+                         "_rscLayer cutRsc [ ""RscFiringDrillTime"", ""plain"" ];" \n
+                         "" \n
+                         "//--- Default values" \n
+                         "[ 0 ] call DNA_fnc_raceUpdateTime;" \n
+                         "[ 0, count DNA_race_stages ] call DNA_fnc_raceUpdateStage;" \n
+                         "[ 1, DNA_race_laps ] call DNA_fnc_raceUpdateLap;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wait">*/
+                                class Wait
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="Countdown";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""DNA_race_countdown"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Set_Countdown">*/
+                class Set_Countdown
+                {
+                        name = "Set_Countdown";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"//--- Set countdown and broadcast" \n
+                         "DNA_race_countdown = 5;" \n
+                         "publicVariable ""DNA_race_countdown"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Finished">*/
+                                class Finished
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="End";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""DNA_race_finished"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Countdown">*/
+                class Countdown
+                {
+                        name = "Countdown";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"private ""_countdownHandle"";" \n
+                         "_countdownHandle = [] spawn {" \n
+                         "" \n
+                         "	private [ ""_startTime"", ""_countdown"", ""_lastInt"" ];" \n
+                         "	_startTime = time;" \n
+                         "	_countdown = DNA_race_countdown;" \n
+                         "	_lastInt = _countdown;" \n
+                         "" \n
+                         "	//--- Countdown hint + voice" \n
+                         "	while { _countdown >= 0 } do {" \n
+                         "" \n
+                         "		//--- Check if countdown has decremented by 1" \n
+                         "		if ( _countdown == _lastInt || { ceil _countdown < _lastInt } ) then {" \n
+                         "" \n
+                         "			_lastInt = ceil _countdown;" \n
+                         "" \n
+                         "			//--- Play countdown beep" \n
+                         "			playSound [ ""FD_Timer_F"", true ];" \n
+                         "" \n
+                         "			//--- Play countdown sound" \n
+                         "			_sound = format [ ""DNA_RaceCountdown%1"", _lastInt ];" \n
+                         "			if ( isClass ( missionConfigFile >> ""CfgSounds"" >> _sound ) ) then {" \n
+                         "" \n
+                         "				playSound [ _sound, true ];" \n
+                         "" \n
+                         "			};" \n
+                         "" \n
+                         "		};" \n
+                         "" \n
+                         "		sleep 0.01;" \n
+                         "" \n
+                         "		//--- Decrement countdown" \n
+                         "		_countdown = ( _startTime + DNA_race_countdown ) - time;" \n
+                         "" \n
+                         "		//--- Set time text" \n
+                         "		[ _countdown, DNA_race_colorHTML, true ] call DNA_fnc_raceUpdateTime;" \n
+                         "" \n
+                         "	};" \n
+                         "" \n
+                         "	//--- Go hint" \n
+                         "	playSound [ ""DNA_RaceCountdownGo"", true ];" \n
+                         "	playSound [ ""FD_Start_F"", true ];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "//--- Wait objective complete" \n
+                         "[ ""DNA_race_wait"", ""Succeeded"", false ] call BIS_fnc_taskSetState;" \n
+                         "[""DNA_race_wait""] call BIS_fnc_deleteTask;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wait_Countdown">*/
+                                class Wait_Countdown
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="Race";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"scriptDone _countdownHandle"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Race">*/
+                class Race
+                {
+                        name = "Race";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"//--- Set is racing variable" \n
+                         "DNA_race_racing = true;" \n
+                         "" \n
+                         "//--- Fuel and unlock vehicle" \n
+                         "vehicle player setFuel 1;" \n
+                         "vehicle player lock false;" \n
+                         "" \n
+                         "//--- Scheduled race loop" \n
+                         "DNA_race_loop = [] spawn {" \n
+                         "	" \n
+                         "	_color1 = [ 1, 1, 1, 1 ];" \n
+                         "	_color2 = DNA_race_color;" \n
+                         "	_colorStepR = ( abs ( ( _color1 select 0 ) - ( _color2 select 0 ) ) ) / 25;" \n
+                         "	_colorStepG = ( abs ( ( _color1 select 1 ) - ( _color2 select 1 ) ) ) / 25;" \n
+                         "	_colorStepB = ( abs ( ( _color1 select 2 ) - ( _color2 select 2 ) ) ) / 25;" \n
+                         "	_colorUp = false;" \n
+                         "	_colorCnt = 0;" \n
+                         "	_color = _color1;" \n
+                         "" \n
+                         "	_startTime = time;" \n
+                         "" \n
+                         "	//--- Endless loop" \n
+                         "	while { true } do {" \n
+                         "" \n
+                         "		//--- Set 3d icon text" \n
+                         "		if ( !isNil ""DNA_race_stageDistance"" ) then {" \n
+                         "" \n
+                         "			_dist = DNA_race_stageDistance;" \n
+                         "			_alpha = ( ( [ [ 0, 5 ], _dist, [ 0.3, 1 ] ] call BIS_fnc_linearConversion ) min 1 ) max 0.3;" \n
+                         "			_size = ( ( [ [ 0, 25], _dist, [ 1, 1.5 ] ] call BIS_fnc_linearConversion ) min 1.5 ) max 1;" \n
+                         "" \n
+                         "			if ( _colorUp ) then " \n
+                         "			{" \n
+                         "				_color set [ 0, ( _color select 0 ) + _colorStepR ];" \n
+                         "				_color set [ 1, ( _color select 1 ) + _colorStepG ];" \n
+                         "				_color set [ 2, ( _color select 2 ) + _colorStepB ];" \n
+                         "			} " \n
+                         "			else " \n
+                         "			{" \n
+                         "				_color set [ 0, ( _color select 0 ) - _colorStepR ];" \n
+                         "				_color set [ 1, ( _color select 1 ) - _colorStepG ];" \n
+                         "				_color set [ 2, ( _color select 2 ) - _colorStepB ];" \n
+                         "			};" \n
+                         "" \n
+                         "			_colorCnt = _colorCnt + 1;" \n
+                         "			if ( _colorCnt >= 24 ) then { _colorUp = !_colorUp; _colorCnt = 0 };" \n
+                         "" \n
+                         "			_color set [ 3, _alpha ];" \n
+                         "" \n
+                         "			DNA_race_iconGroup setGroupIconParams [ _color, format [ ""%1m"", round _dist ], _size, true ];" \n
+                         "" \n
+                         "		};" \n
+                         "		" \n
+                         "		//--- Time" \n
+                         "		[ time - _startTime ] call DNA_fnc_raceUpdateTime;" \n
+                         "" \n
+                         "		sleep 0.01;" \n
+                         "" \n
+                         "	};" \n
+                         "	" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Setup_Stage";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End">*/
+                class End
+                {
+                        name = "End";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"//--- Broadcast winner" \n
+                         "publicVariable ""DNA_race_finished"";" \n
+                         "DNA_race_manager = false;" \n
+                         "publicVariable ""DNA_race_manager"";" \n
+                         "DNA_race_serverInit = nil;" \n
+                         "publicVariable ""DNA_race_serverInit"";" \n
+                         "DNA_race_countDown = nil;" \n
+                         "publicVariable ""DNA_raceCountDown"";" \n
+                         "" \n
+                         "//--- Show winner name" \n
+                         "[ [ format [ ""%1 won the kart race"", DNA_race_finished ] , 1 ], ""DNA_fnc_raceHint"" ] call BIS_fnc_MP;" \n
+                         "[]spawn psq_fnc_raceReset;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Setup_Stage">*/
+                class Setup_Stage
+                {
+                        name = "Setup_Stage";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"//--- Move 3d icon" \n
+                         "_iconPos = ATLToASL  ( DNA_race_stages select DNA_race_currentStage );" \n
+                         "_iconPos set [ 2, ( _iconPos select 2 ) - 2.3  ];" \n
+                         "DNA_race_icon setPosASL _iconPos;" \n
+                         "" \n
+                         "//systemChat ""Setup Stage"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Clear_Stage">*/
+                                class Clear_Stage
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Stage_Cleared";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"DNA_race_stageDistance = getPos player distance ( DNA_race_stages select DNA_race_currentStage );" \n
+                                         "private ""_angle"";" \n
+                                         "_angle = [ format [ ""DNA_race_%1"", DNA_race_currentStage + 1 ], player ] call DNA_fnc_markerRelativeDirTo;" \n
+                                         "if ( _angle < 0 ) then { _angle = _angle + 360 };" \n
+                                         "_angle = if ( ( _angle > 90 ) && ( _angle < 270 ) ) then { false } else { true };" \n
+                                         "" \n
+                                         "_angle" \n
+                                         "&&" \n
+                                         "{ DNA_race_stageDistance <= 6 }"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Next_Stage">*/
+                class Next_Stage
+                {
+                        name = "Next_Stage";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"//--- Increment current stage" \n
+                         "DNA_race_currentStage = DNA_race_currentStage + 1;" \n
+                         "" \n
+                         "//systemChat ""Next Stage"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Setup_Stage";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Next_Lap">*/
+                class Next_Lap
+                {
+                        name = "Next_Lap";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"//--- Reset current stage" \n
+                         "DNA_race_currentStage = 0;" \n
+                         "" \n
+                         "//--- Increment lap" \n
+                         "DNA_race_currentLap = DNA_race_currentLap + 1;" \n
+                         "" \n
+                         "//--- Set current lap text" \n
+                         "[ DNA_race_currentLap, DNA_race_laps ] call DNA_fnc_raceUpdateLap;" \n
+                         "" \n
+                         "//systemChat ""Next Lap"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Setup_Stage";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End_1">*/
+                class End_1
+                {
+                        name = "End_1";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/"if ( isNil ""DNA_race_finished"" ) then {" \n
+                         "" \n
+                         "	//--- Broadcast finish to server" \n
+                         "	DNA_race_finished = name player;" \n
+                         "	publicVariableServer ""DNA_race_finished"";" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "//--- Terminate race loop" \n
+                         "terminate DNA_race_loop;" \n
+                         "" \n
+                         "//--- Delete 3d marker" \n
+                         "deleteVehicle DNA_race_icon;" \n
+                         "deleteGroup DNA_race_iconGroup;" \n
+                         "" \n
+                         "//--- Play finish sound" \n
+                         "playSound ""FD_Finish_F"";" \n
+                         "" \n
+                         "_rscLayer cutFadeOut 30;" \n
+                         "//systemChat ""Finished"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Stage_Cleared">*/
+                class Stage_Cleared
+                {
+                        name = "Stage_Cleared";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"//--- Play sound" \n
+                         "playSound [ ""FD_CP_Clear_F"", true ];" \n
+                         "" \n
+                         "//--- Set current stage text" \n
+                         "[ DNA_race_currentStage + 1, count DNA_race_stages ] call DNA_fnc_raceUpdateStage;" \n
+                         "" \n
+                         "//--- Show stage completed visual" \n
+                         "if ( !isNil ""DNA_race_stageVisual"" ) then { terminate DNA_race_stageVisual };" \n
+                         "" \n
+                         "DNA_race_stageVisual = [] spawn {" \n
+                         "" \n
+                         "	RscFiringDrillCheckpoint_checkpointPicture = ""A3\Modules_F_Beta\data\FiringDrills\checkpoint_ca"";" \n
+                         "	RscFiringDrillCheckpoint_checkpointText = str ( DNA_race_currentStage + 1 );" \n
+                         "	RscFiringDrillCheckpoint_checkpointTextColor = DNA_race_color;" \n
+                         "	RscFiringDrillCheckpoint_done = false;" \n
+                         "	( ""DNA_race_stage"" call BIS_fnc_rscLayer ) cutRsc [ ""RscFiringDrillCheckpoint"", ""plain"" ];" \n
+                         "" \n
+                         "	sleep 2;" \n
+                         "" \n
+                         "	RscFiringDrillCheckpoint_done = true;" \n
+                         "" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Finish">*/
+                                class Finish
+                                {
+                                        itemno = 26;
+                                        priority = 2.000000;
+                                        to="End_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"DNA_race_currentStage == count DNA_race_stages - 1" \n
+                                         "&&" \n
+                                         "{ DNA_race_currentLap == DNA_race_laps }"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Is_Next_Lap">*/
+                                class Is_Next_Lap
+                                {
+                                        itemno = 24;
+                                        priority = 1.000000;
+                                        to="Next_Lap";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/" DNA_race_currentStage == count DNA_race_stages - 1" \n
+                                         "&&" \n
+                                         "{ DNA_race_currentLap < DNA_race_laps }"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Is_Next_Stage">*/
+                                class Is_Next_Stage
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Next_Stage";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"DNA_race_currentStage < count DNA_race_stages - 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "End",
+                "End_1",
+        };
+};
+/*%FSM</COMPILE>*/

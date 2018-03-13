@@ -16,13 +16,10 @@ if ( !isMultiplayer ) then {
 
 };
 
+#include "psqBase\psqInclude.hpp"
 #include "nimitzSafeZone\nimitzSafeZoneInclude.hpp"
 #include "Air2Air\Air2AirInclude.hpp"
 #include "lzPractice\lzPracticeInclude.hpp"
-
-timer = 1;
-timer1 = 1;
-
-[] spawn psq_fnc_respawnNimVeh;
+#include "convoyHunt\convoyHuntInclude.hpp"
 
 diag_log "***InitServer Complete";

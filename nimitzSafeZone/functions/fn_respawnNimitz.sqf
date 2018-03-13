@@ -1,18 +1,18 @@
-//Respawn Nim Vehicles
-/*To Do:
-	Include folding scripts for various aircraft types
-	Add action to spawned vehicle that allows unfolding (viper and huey)
-*/
+//Respawn Nimitz
 
 if !(isServer) exitWith {};
 
-if !(missionNamespace getVariable ["hasRun", false]) then {
+params["_nimitz"];
+
+_unitList = [_nimitz] call psq_fnc_unitsOnNimitz;
+
+if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 
 	//initialization section (only runs once at the beginning of the mission)
 	//gathers information on all editor-placed vehicles on the nimitz
 
 	{
-		if (_x inArea nimSafeZoneT && (_x getVariable ["respawnOnNimitz",false])) then {
+		if (_x isKindOf "Air" || _x isKindOf "LandVehicle" || _x isKindOf "ReammoBox_F") then {
 			//Add vehicle name, type, posWorld, and dir to nimitzVehicles arrays
 			_vehs = +(missionNamespace getVariable ["nimitzVehNames",[]]);
 			_vehs pushBack (str _x);
@@ -54,8 +54,9 @@ if !(missionNamespace getVariable ["hasRun", false]) then {
 					};
 				},_x,4,false,true]] remoteExec ["addAction",0,true];
 			};
+
 		};
-	}forEach vehicles;
+	}forEach _unitList;
 
 	diag_log (format ["*** Nimitz placed vehicles: %1", missionNamespace getVariable ["nimitzVehNames",[]]]);
 	diag_log (format ["*** Placed vehicle types: %1", missionNamespace getVariable ["nimitzVehTypes",[]]]);
@@ -73,7 +74,7 @@ if !(missionNamespace getVariable ["hasRun", false]) then {
 		["RHS_UH1Y_base"],
 		["FLAN_EA18G_Base"]
 	]];
-	missionNamespace setVariable ["hasRun", true];
+	missionNamespace setVariable ["nimitzRespawnInit", true];
 
 } else {
 	//Section that's run when the mpKilled event handler fires
@@ -195,13 +196,11 @@ if !(missionNamespace getVariable ["hasRun", false]) then {
 	_newobj setDir _dir;
 	_newobj setPosWorld _pos;
 
-	_newobj setVariable ["respawnOnNimitz", true];
 	_newobj setVariable ["name", _objectName];
 	_newobj removeAllMPEventHandlers "MPKilled";
 	_newobj addMPEventHandler ["MPKilled", {[_this select 0] spawn respawnNimVeh;}];
 
 };
-
 
 /*hornet:
 JS_JC_FA18F
@@ -270,3 +269,5 @@ FLAN_EA18G_Base
 _v animate ["leftwing",1, true];
 _v animate ["rightwing",1, true];
 */
+
+

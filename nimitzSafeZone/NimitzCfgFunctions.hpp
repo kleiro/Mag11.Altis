@@ -6,7 +6,10 @@ class PSQ_Nimitz {
 	class functions {
 		file = "nimitzSafeZone\functions";
 		class localityChange;
+		class locateNimitzCarriers;
+		class nimitzCleanup;
 		class nimitzSafeZone;
-		class respawnNimVeh;
+		class respawnNimitz;
+		class unitsOnNimitz;
 	}
 }
