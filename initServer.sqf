@@ -1,11 +1,9 @@
 /*
-* @Author:  DnA
-* @Profile: http://steamcommunity.com/id/dna_uk
-* @Date:    2014-04-24 09:20:06
-* @Last Modified by:   DnA
-* @Last Modified time: 2014-06-14 07:42:39
-*/
-
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:25:37 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:25:37 
+ */
 enableSaving [ false, false ];
 
 //--- Singleplayer

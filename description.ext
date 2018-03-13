@@ -40,7 +40,6 @@ class CfgFunctions
 {
 	#include "nmd\cfgFunctions.hpp"
 	#include "nmd\modules\admin\cfgFunctions.hpp"
-	#include "nmd\modules\map\cfgFunctions.hpp"
 	#include "nmd\modules\vehicles\cfgFunctions.hpp"
 	#include "race\cfgFunctions.hpp"
 	#include "psqBase\psqBaseCfgFunctions.hpp"

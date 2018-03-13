@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:23:00 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:23:00 
+ */
 //cfgFunctions for lzPractice
 
 class PSQ_lzPractice {

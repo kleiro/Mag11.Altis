@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:20:34 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:20:34 
+ */
 //Air to air range
 //Spawns enemy aircraft when an aircraft is inside the a2a zone
 
@@ -40,7 +46,7 @@ while {true} do {
 				//Set a loiter waypoint and reveal/target the player
 				_wp = (group (driver _newUnit)) addWaypoint [_markerPos, 250];
 				_wp setWaypointType "Loiter";
-				{_x reveal (vehicle _player), _x doTarget (vehicle _player); _x setSkill 1;}forEach crew _newUnit;
+				{_x reveal (vehicle _player);_x doTarget (vehicle _player);_x setSkill 1;}forEach crew _newUnit;
 				//Doesn't seem like these do much
 				_newUnit allowCrewInImmobile true;
 				_newUnit lock true;

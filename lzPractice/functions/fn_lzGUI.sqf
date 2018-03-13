@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:22:36 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:22:36 
+ */
 //lzGUI
 //Creates the dialog for lz practice
 

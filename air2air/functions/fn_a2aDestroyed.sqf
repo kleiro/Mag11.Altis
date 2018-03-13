@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:20:17 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:20:17 
+ */
 //a2aDestroyed
 //Runs each time an enemy aircraft is destroyed. Checks if it is the last aircraft that was targeting a player, if it was, then begin a 20 second timer, then remove the player entry from the player a2a array and the enemy aircraft from it's array.
 

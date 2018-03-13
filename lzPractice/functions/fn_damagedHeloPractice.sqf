@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:22:11 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:22:11 
+ */
 //damagedHeloPractice
 //adds actions that damages helo's main rotors and tailrotors, and restores them if reselected.
 if !(isServer) exitWith {};

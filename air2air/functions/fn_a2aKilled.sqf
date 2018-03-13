@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:20:30 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:20:30 
+ */
 //a2aKilled
 //Runs when a player with enemy aircraft targeting them dies. If there are other players with aircraft engaging them, then the dead player's enemy aircraft are reassigned and told to target other players. If there are no other players, the enemy aircraft are deleted.
 

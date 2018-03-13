@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:21:31 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:21:31 
+ */
 //convoyHunt
 
 diag_log format["*** CVH OUTPUT: Starting cvh"];

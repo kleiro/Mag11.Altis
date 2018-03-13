@@ -1,3 +1,9 @@
+/*
+ * @Author: MoarRightRudder 
+ * @Date: 2018-03-13 14:22:29 
+ * @Last Modified by:   MoarRightRudder 
+ * @Last Modified time: 2018-03-13 14:22:29 
+ */
 //HeloMon
 
 params ["_helo","_taskName","_bluPos"];
