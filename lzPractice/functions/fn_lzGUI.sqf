@@ -35,12 +35,12 @@ if (count (missionNamespace getVariable "lzTasks") > 0) then {
 }else {
 	lbAdd[1500, "(None)"];
 };
-//////////////////////////////////////ADD QUOTATIONS TO THIS AFTER
+//End selected lz scenario
 buttonSetAction[2402,"
 	_index = lbCurSel 1500;
 	if (count (missionNamespace getVariable 'lzTasks') > 0) then {
 		_task = ((missionNamespace getVariable 'lzTasks') select _index) select 1;
-		missionNameSpace setVariable ['taskState' + _task, 'Canceled'];
+		missionNameSpace setVariable ['taskState' + _task, 'Canceled', true];
 		closeDialog 1;
 	};
 "];

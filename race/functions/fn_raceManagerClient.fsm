@@ -1,71 +1,63 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, DnA Race Manager">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, DnA Race Manager Client">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"Init"};
-item1[] = {"Server",4,218,-175.000000,-125.000000,-75.000000,-75.000000,0.000000,"Server"};
-item2[] = {"Setup",2,250,-175.000000,-50.000000,-75.000000,0.000000,0.000000,"Setup"};
-item3[] = {"Wait",4,218,-175.000000,25.000000,-75.000000,75.000000,0.000000,"Wait"};
-item4[] = {"Client",4,218,75.000000,-125.000000,175.000000,-75.000000,1.000000,"Client"};
-item5[] = {"Setup_1",2,4346,75.000000,-50.000000,175.000000,0.000000,0.000000,"Setup"};
-item6[] = {"Wait",4,218,75.000000,25.000000,175.000000,75.000000,0.000000,"Wait"};
-item7[] = {"Set_Countdown",2,250,-175.000000,100.000000,-75.000000,150.000000,0.000000,"Set Countdown"};
-item8[] = {"Countdown",2,250,75.000000,100.000000,175.000000,150.000000,0.000000,"Countdown"};
-item9[] = {"Wait_Countdown",4,218,75.000000,175.000000,175.000000,225.000000,0.000000,"Wait" \n "Countdown"};
-item10[] = {"Race",2,250,75.000000,250.000000,175.000000,300.000000,0.000000,"Race"};
-item11[] = {"_",8,218,75.000000,325.000000,175.000000,375.000000,0.000000,""};
-item12[] = {"",7,210,496.000000,396.000000,504.000000,404.000000,0.000000,""};
-item13[] = {"Finished",4,218,-175.000000,175.000000,-75.000000,225.000000,0.000000,"Finished"};
-item14[] = {"End",1,250,-175.000000,250.000000,-75.000000,300.000000,0.000000,"End"};
-item15[] = {"",7,210,371.000000,571.000000,379.000000,579.000000,0.000000,""};
-item16[] = {"Setup_Stage",2,250,200.000000,325.000000,300.000000,375.000000,0.000000,"Setup Stage"};
-item17[] = {"",7,210,246.000000,571.000000,254.000000,579.000000,0.000000,""};
-item18[] = {"",7,210,371.000000,396.000000,379.000000,404.000000,0.000000,""};
-item19[] = {"Is_Next_Stage",4,218,200.000000,425.000000,300.000000,475.000000,0.000000,"Is Next Stage"};
-item20[] = {"Clear_Stage",4,218,325.000000,325.000000,425.000000,375.000000,0.000000,"Clear" \n "Stage"};
-item21[] = {"",7,210,121.000000,571.000000,129.000000,579.000000,0.000000,""};
-item22[] = {"Next_Stage",2,250,200.000000,500.000000,300.000000,550.000000,0.000000,"Next Stage"};
-item23[] = {"",7,210,246.000000,396.000000,254.000000,404.000000,0.000000,""};
-item24[] = {"Is_Next_Lap",4,218,325.000000,425.000000,425.000000,475.000000,1.000000,"Is Next Lap"};
-item25[] = {"Next_Lap",2,250,325.000000,500.000000,425.000000,550.000000,0.000000,"Next Lap"};
-item26[] = {"Finish",4,218,450.000000,425.000000,550.000000,475.000000,2.000000,"Finish"};
-item27[] = {"End_1",1,250,450.000000,500.000000,550.000000,550.000000,0.000000,"End"};
-item28[] = {"Stage_Cleared",2,250,450.000000,325.000000,550.000000,375.000000,0.000000,"Stage" \n "Cleared"};
+item1[] = {"Client",8,218,80.430481,-125.000000,170.430481,-75.000000,1.000000,"Client"};
+item2[] = {"Setup",2,250,75.000000,-50.000000,175.000000,0.000000,0.000000,"Setup"};
+item3[] = {"Wait",4,218,75.000000,25.000000,175.000000,75.000000,0.000000,"Wait"};
+item4[] = {"Countdown",2,250,75.000000,100.000000,175.000000,150.000000,0.000000,"Countdown"};
+item5[] = {"Wait_Countdown",4,218,75.000000,175.000000,175.000000,225.000000,0.000000,"Wait" \n "Countdown"};
+item6[] = {"Race",2,250,75.000000,250.000000,175.000000,300.000000,0.000000,"Race"};
+item7[] = {"_",8,218,75.000000,325.000000,175.000000,375.000000,0.000000,""};
+item8[] = {"",7,210,496.000000,396.000000,504.000000,404.000000,0.000000,""};
+item9[] = {"",7,210,371.000000,571.000000,379.000000,579.000000,0.000000,""};
+item10[] = {"Setup_Stage",2,250,200.000000,325.000000,300.000000,375.000000,0.000000,"Setup Stage"};
+item11[] = {"",7,210,246.000000,571.000000,254.000000,579.000000,0.000000,""};
+item12[] = {"",7,210,371.000000,396.000000,379.000000,404.000000,0.000000,""};
+item13[] = {"Is_Next_Stage",4,218,200.000000,425.000000,300.000000,475.000000,0.000000,"Is Next Stage"};
+item14[] = {"Clear_Stage",4,218,325.000000,325.000000,425.000000,375.000000,0.000000,"Clear" \n "Stage"};
+item15[] = {"",7,210,121.000000,571.000000,129.000000,579.000000,0.000000,""};
+item16[] = {"Next_Stage",2,250,200.000000,500.000000,300.000000,550.000000,0.000000,"Next Stage"};
+item17[] = {"",7,210,246.000000,396.000000,254.000000,404.000000,0.000000,""};
+item18[] = {"Is_Next_Lap",4,218,325.000000,425.000000,425.000000,475.000000,1.000000,"Is Next Lap"};
+item19[] = {"Next_Lap",2,250,325.000000,500.000000,425.000000,550.000000,0.000000,"Next Lap"};
+item20[] = {"Finish",4,218,450.000000,425.000000,550.000000,475.000000,2.000000,"Finish"};
+item21[] = {"End",1,4346,450.000000,500.000000,550.000000,550.000000,0.000000,"End"};
+item22[] = {"Stage_Cleared",2,250,450.000000,325.000000,550.000000,375.000000,0.000000,"Stage" \n "Cleared"};
+item23[] = {"Non_participant",4,218,-220.119476,-132.538879,-94.821686,-63.532410,10.000000,"Non participant"};
+item24[] = {"End_1",1,250,-365.813812,-123.035606,-275.813782,-73.035629,0.000000,"End"};
 link0[] = {0,1};
-link1[] = {0,4};
+link1[] = {0,23};
 link2[] = {1,2};
 link3[] = {2,3};
-link4[] = {3,7};
+link4[] = {3,4};
 link5[] = {4,5};
 link6[] = {5,6};
-link7[] = {6,8};
-link8[] = {7,13};
-link9[] = {8,9};
-link10[] = {9,10};
-link11[] = {10,11};
-link12[] = {11,16};
-link13[] = {12,18};
-link14[] = {12,26};
-link15[] = {13,14};
-link16[] = {15,17};
-link17[] = {16,20};
-link18[] = {17,21};
-link19[] = {18,23};
-link20[] = {18,24};
-link21[] = {19,22};
-link22[] = {20,28};
-link23[] = {21,11};
-link24[] = {22,17};
-link25[] = {23,19};
-link26[] = {24,25};
-link27[] = {25,15};
-link28[] = {26,27};
-link29[] = {28,12};
-globals[] = {0.000000,0,0,0,0,640,480,1,60,6316128,1,-212.092499,691.062378,504.450775,-166.844757,1175,884,1};
-window[] = {2,-1,-1,-1,-1,1035,-25,1875,6,3,1193};
+link7[] = {6,7};
+link8[] = {7,10};
+link9[] = {8,12};
+link10[] = {8,20};
+link11[] = {9,11};
+link12[] = {10,14};
+link13[] = {11,15};
+link14[] = {12,17};
+link15[] = {12,18};
+link16[] = {13,16};
+link17[] = {14,22};
+link18[] = {15,7};
+link19[] = {16,11};
+link20[] = {17,13};
+link21[] = {18,19};
+link22[] = {19,9};
+link23[] = {20,21};
+link24[] = {22,8};
+link25[] = {23,24};
+globals[] = {0.000000,0,0,0,0,640,480,1,63,6316128,1,-524.424500,797.884583,542.516418,-209.230652,973,668,1};
+window[] = {2,-1,-1,-1,-1,1230,-18,1538,346,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
-        fsmName = "DnA Race Manager";
+        fsmName = "DnA Race Manager Client";
         class States
         {
                 /*%FSM<STATE "Init">*/
@@ -74,34 +66,30 @@ class FSM
                         name = "Init";
                         itemno = 0;
                         init = /*%FSM<STATEINIT""">*/"private ""_laps"";" \n
-                         "DNA_race_laps = [ _this, 0, 1, [0] ] call BIS_fnc_param;" \n
-                         "" \n
-                         "DNA_race_manager = true;" \n
-                         "missionNamespace setVariable [""activeRace"", true];"/*%FSM</STATEINIT""">*/;
+                         "DNA_race_laps = 2;" \n
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "Client">*/
-                                class Client
+                                /*%FSM<LINK "Non_participant">*/
+                                class Non_participant
                                 {
-                                        itemno = 4;
-                                        priority = 1.000000;
-                                        to="Setup_1";
+                                        itemno = 23;
+                                        priority = 10.000000;
+                                        to="End_1";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"(!isNil ""DNA_race_serverInit"" && (vehicle player) isKindOf 'kart_01_base_f' && (vehicle Player) inArea kartStartTrigger)" \n
-                                         "||" \n
-                                         "{ !isServer && !isNull player }"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if (!((vehicle player) isKindOf 'kart_01_base_f') || !((vehicle Player) inArea kartStartTrigger))"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
-                                /*%FSM<LINK "Server">*/
-                                class Server
+                                /*%FSM<LINK "Client">*/
+                                class Client
                                 {
                                         itemno = 1;
-                                        priority = 0.000000;
+                                        priority = 1.000000;
                                         to="Setup";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"isServer"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -113,39 +101,6 @@ class FSM
                 {
                         name = "Setup";
                         itemno = 2;
-                        init = /*%FSM<STATEINIT""">*/"//--- Execute client if !Dedicated" \n
-                         "if !( isDedicated ) then { DNA_race_laps spawn DNA_fnc_raceManager };" \n
-                         "" \n
-                         "//--- Wait before countdown" \n
-                         "private ""_time"";" \n
-                         "_time = time + 10;" \n
-                         "" \n
-                         "//--- Mark as setup" \n
-                         "DNA_race_finished = nil;" \n
-                         "publicVariable ""DNA_race_finished"";" \n
-                         "DNA_race_serverInit = true;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 3;
-                                        priority = 0.000000;
-                                        to="Set_Countdown";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _time"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Setup_1">*/
-                class Setup_1
-                {
-                        name = "Setup_1";
-                        itemno = 5;
                         init = /*%FSM<STATEINIT""">*/"//--- Get all race marker positions" \n
                          "DNA_race_stages = [];" \n
                          "" \n
@@ -228,7 +183,7 @@ class FSM
                                 /*%FSM<LINK "Wait">*/
                                 class Wait
                                 {
-                                        itemno = 6;
+                                        itemno = 3;
                                         priority = 0.000000;
                                         to="Countdown";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -239,36 +194,11 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "Set_Countdown">*/
-                class Set_Countdown
-                {
-                        name = "Set_Countdown";
-                        itemno = 7;
-                        init = /*%FSM<STATEINIT""">*/"//--- Set countdown and broadcast" \n
-                         "DNA_race_countdown = 5;" \n
-                         "publicVariable ""DNA_race_countdown"";"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Finished">*/
-                                class Finished
-                                {
-                                        itemno = 13;
-                                        priority = 0.000000;
-                                        to="End";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!isNil ""DNA_race_finished"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
                 /*%FSM<STATE "Countdown">*/
                 class Countdown
                 {
                         name = "Countdown";
-                        itemno = 8;
+                        itemno = 4;
                         init = /*%FSM<STATEINIT""">*/"private ""_countdownHandle"";" \n
                          "_countdownHandle = [] spawn {" \n
                          "" \n
@@ -323,7 +253,7 @@ class FSM
                                 /*%FSM<LINK "Wait_Countdown">*/
                                 class Wait_Countdown
                                 {
-                                        itemno = 9;
+                                        itemno = 5;
                                         priority = 0.000000;
                                         to="Race";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -338,7 +268,7 @@ class FSM
                 class Race
                 {
                         name = "Race";
-                        itemno = 10;
+                        itemno = 6;
                         init = /*%FSM<STATEINIT""">*/"//--- Set is racing variable" \n
                          "DNA_race_racing = true;" \n
                          "" \n
@@ -406,7 +336,7 @@ class FSM
                                 /*%FSM<LINK "_">*/
                                 class _
                                 {
-                                        itemno = 11;
+                                        itemno = 7;
                                         priority = 0.000000;
                                         to="Setup_Stage";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -417,34 +347,11 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "End">*/
-                class End
-                {
-                        name = "End";
-                        itemno = 14;
-                        init = /*%FSM<STATEINIT""">*/"//--- Broadcast winner" \n
-                         "publicVariable ""DNA_race_finished"";" \n
-                         "DNA_race_manager = false;" \n
-                         "publicVariable ""DNA_race_manager"";" \n
-                         "DNA_race_serverInit = nil;" \n
-                         "publicVariable ""DNA_race_serverInit"";" \n
-                         "DNA_race_countDown = nil;" \n
-                         "publicVariable ""DNA_raceCountDown"";" \n
-                         "" \n
-                         "//--- Show winner name" \n
-                         "[ [ format [ ""%1 won the kart race"", DNA_race_finished ] , 1 ], ""DNA_fnc_raceHint"" ] call BIS_fnc_MP;" \n
-                         "[]spawn psq_fnc_raceReset;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
                 /*%FSM<STATE "Setup_Stage">*/
                 class Setup_Stage
                 {
                         name = "Setup_Stage";
-                        itemno = 16;
+                        itemno = 10;
                         init = /*%FSM<STATEINIT""">*/"//--- Move 3d icon" \n
                          "_iconPos = ATLToASL  ( DNA_race_stages select DNA_race_currentStage );" \n
                          "_iconPos set [ 2, ( _iconPos select 2 ) - 2.3  ];" \n
@@ -457,7 +364,7 @@ class FSM
                                 /*%FSM<LINK "Clear_Stage">*/
                                 class Clear_Stage
                                 {
-                                        itemno = 20;
+                                        itemno = 14;
                                         priority = 0.000000;
                                         to="Stage_Cleared";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -480,7 +387,7 @@ class FSM
                 class Next_Stage
                 {
                         name = "Next_Stage";
-                        itemno = 22;
+                        itemno = 16;
                         init = /*%FSM<STATEINIT""">*/"//--- Increment current stage" \n
                          "DNA_race_currentStage = DNA_race_currentStage + 1;" \n
                          "" \n
@@ -491,7 +398,7 @@ class FSM
                                 /*%FSM<LINK "_">*/
                                 class _
                                 {
-                                        itemno = 11;
+                                        itemno = 7;
                                         priority = 0.000000;
                                         to="Setup_Stage";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -506,7 +413,7 @@ class FSM
                 class Next_Lap
                 {
                         name = "Next_Lap";
-                        itemno = 25;
+                        itemno = 19;
                         init = /*%FSM<STATEINIT""">*/"//--- Reset current stage" \n
                          "DNA_race_currentStage = 0;" \n
                          "" \n
@@ -523,7 +430,7 @@ class FSM
                                 /*%FSM<LINK "_">*/
                                 class _
                                 {
-                                        itemno = 11;
+                                        itemno = 7;
                                         priority = 0.000000;
                                         to="Setup_Stage";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -534,11 +441,11 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "End_1">*/
-                class End_1
+                /*%FSM<STATE "End">*/
+                class End
                 {
-                        name = "End_1";
-                        itemno = 27;
+                        name = "End";
+                        itemno = 21;
                         init = /*%FSM<STATEINIT""">*/"if ( isNil ""DNA_race_finished"" ) then {" \n
                          "" \n
                          "	//--- Broadcast finish to server" \n
@@ -569,7 +476,7 @@ class FSM
                 class Stage_Cleared
                 {
                         name = "Stage_Cleared";
-                        itemno = 28;
+                        itemno = 22;
                         init = /*%FSM<STATEINIT""">*/"//--- Play sound" \n
                          "playSound [ ""FD_CP_Clear_F"", true ];" \n
                          "" \n
@@ -598,9 +505,9 @@ class FSM
                                 /*%FSM<LINK "Finish">*/
                                 class Finish
                                 {
-                                        itemno = 26;
+                                        itemno = 20;
                                         priority = 2.000000;
-                                        to="End_1";
+                                        to="End";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"DNA_race_currentStage == count DNA_race_stages - 1" \n
                                          "&&" \n
@@ -611,7 +518,7 @@ class FSM
                                 /*%FSM<LINK "Is_Next_Lap">*/
                                 class Is_Next_Lap
                                 {
-                                        itemno = 24;
+                                        itemno = 18;
                                         priority = 1.000000;
                                         to="Next_Lap";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -624,7 +531,7 @@ class FSM
                                 /*%FSM<LINK "Is_Next_Stage">*/
                                 class Is_Next_Stage
                                 {
-                                        itemno = 19;
+                                        itemno = 13;
                                         priority = 0.000000;
                                         to="Next_Stage";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
@@ -632,6 +539,18 @@ class FSM
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End_1">*/
+                class End_1
+                {
+                        name = "End_1";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
                         };
                 };
                 /*%FSM</STATE>*/

@@ -24,7 +24,7 @@ missionNameSpace setVariable ["EACSpawnTable", [
 "B_Plane_CAS_01_dynamicLoadout_F",
 "FLAN_EA18G",
 "C_Plane_civil_01_racing_f"
-]];
+], true];
 
 missionNameSpace setVariable ["EACSet", +(missionNameSpace getVariable "EACSpawnTable")];
 

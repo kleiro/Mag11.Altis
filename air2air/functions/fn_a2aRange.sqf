@@ -14,7 +14,7 @@ _markerPos = (getMarkerPos _marker);
 _markerPos set [2, _altitude];
 
 while {true} do {
-	_unitsList = (allPlayers - entities "headlesClient_f") inAreaArray [_markerPos, (getMarkerSize _marker) select 0, (getMarkerSize _marker) select 1, 0, false, 500];
+	_unitsList = (allPlayers - entities "headlessClient_f") inAreaArray [_markerPos, (getMarkerSize _marker) select 0, (getMarkerSize _marker) select 1, 0, false, 500];
 
 	{
 		if(side _x == west && !(_x in (a2aTargets select 0))) then {

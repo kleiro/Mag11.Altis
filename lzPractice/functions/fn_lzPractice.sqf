@@ -71,7 +71,7 @@ _lzMarker setMarkerText _lzText;
 _dialogArray = [(_lzText + " @ " + (text _location)), _taskName, _lzMarker];
 _tempArray = missionNamespace getVariable "lzTasks";
 _tempArray pushBack _dialogArray;
-missionNamespace setVariable ["lzTasks", _tempArray];
+missionNamespace setVariable ["lzTasks", _tempArray, true];
 
 //Create blufor groups based on the information passed by the gui
 _count = _hueys + (_stals * 3);

@@ -28,7 +28,7 @@ while {_despawned < (count (missionNamespace getVariable ("bluforUnitsList" + _t
 //Delete task from lzTasks
 _tempArray = missionNamespace getVariable "lzTasks";
 _tempArray deleteAt (_tempArray find _dialogArray);
-missionNamespace setVariable ["lzTasks", _tempArray];
+missionNamespace setVariable ["lzTasks", _tempArray, true];
 switch (missionNamespace getVariable ("taskState" + _taskName)) do {
 	case "Canceled" : {
 		//Delete blufor & opfor units & vehicles

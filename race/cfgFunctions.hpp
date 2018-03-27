@@ -18,7 +18,11 @@ class DNA_Race
 		{
 			preInit = 1;
 		};
-		class raceManager
+		class raceManagerServer
+		{
+			ext = ".fsm";
+		};
+		class raceManagerClient
 		{
 			ext = ".fsm";
 		};

@@ -87,7 +87,7 @@ while{true} do {
 		while{missionNamespace getVariable "convoyUnitsAlive" != 0 && (missionNamespace getVariable ["convoyArrived", false]) isEqualTo false} do {
 			{
 				if(_x in _convoyVehicles) then {
-					missionNamespace setVariable ["convoyArrived",true];
+					missionNamespace setVariable ["convoyArrived",true, true];
 				};
 			}forEach ((getPos _endLoc) nearEntities ["landVehicle", 150]);
 		};
@@ -114,6 +114,6 @@ while{true} do {
 		["convoyHunt"] call BIS_fnc_deleteTask;
 
 		missionNamespace setVariable ["convoyHuntEnabled", false];
-		missionNamespace setVariable ["convoyArrived", false];
+		missionNamespace setVariable ["convoyArrived", false, true];
 	};
 };

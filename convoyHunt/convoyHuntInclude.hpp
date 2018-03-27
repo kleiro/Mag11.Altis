@@ -8,7 +8,7 @@
 
 missionNameSpace setVariable ["convoyUnitsAlive", 0];
 missionNameSpace setVariable ["convoyUnits", []];
-missionNameSpace setVariable ["convoyArrived", false];
+missionNameSpace setVariable ["convoyArrived", false, true];
 
 
 //SpawnList for convoys. 1st list is without AA, 2nd list is with AA
@@ -71,7 +71,7 @@ Using orientation of objects: yes
 	["O_Truck_03_covered_F",[-0.345703,-5.33398,-0.000637531],6.49647e-005,1,0,[-0.393746,0.0150718],"","",true,false],
 	["O_APC_Tracked_02_AA_F",[0.15332,-21.0526,-0.0688949],359.999,1,0,[0.812934,-0.0378804],"","",true,false]
 
-]]];
+]], true];
 
 missionNameSpace setVariable ["convoySpawnLocations",[
 [[11666.6,9640.57,0.00171852],55.6628],
@@ -89,7 +89,7 @@ missionNameSpace setVariable ["convoySpawnLocations",[
 [[23991.8,20250.6,0.00150108],320.039],
 [[3272.71,21416,0.00141144],532.77],
 [[18136.6,14882.6,0.00145721],287.229]
-]];
+], true];
 
 /*^^^To get convoy spawn locations^^^, teleport with zeus and face the area that the convoy should be spawned in, then run this code in debugging:
 copyToClipboard format["[%1,%2],", getPos Player, getDir player];
