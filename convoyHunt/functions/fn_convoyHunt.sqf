@@ -17,7 +17,7 @@ while{true} do {
 
 		_endLoc = _startLoc;
 		while{_endLoc == _startLoc || (_endLoc distance (_spawnPos select 0)) < 4000} do {
-			_endLoc = selectRandom locationList;
+			_endLoc = selectRandom (missionNamespace getVariable "locationList");
 		};
 
 		//Create task

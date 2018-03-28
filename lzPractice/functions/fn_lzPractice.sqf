@@ -22,7 +22,7 @@ if(_hueys == 0 && _stals == 0) exitwith{};
 _taskName = str(taskIndex);
 taskIndex = taskIndex + 1;
 _opforSpawnTable = (missionNamespace getVariable "opforSpawnTable") select _diff;
-_location = selectRandom locationList;
+_location = selectRandom (missionNamespace getVariable "locationList");
 _lzPos = [];
 _lzSearchPos = [];
 _bluPos = [];
