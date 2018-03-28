@@ -133,7 +133,6 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 		case 1: {
 			_newobj animate ["r_wingfold",1,true];
 			_newobj animate ["l_wingfold",1,true];
-			_newobj synchronizeObjectsAdd [hoSetup];
 
 			_newobj setVehicleReportOwnPosition true;
 			_newobj setVehicleReportRemoteTargets true;
