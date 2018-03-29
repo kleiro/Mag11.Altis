@@ -2,8 +2,8 @@
 * @Author:  DnA
 * @Profile: http://steamcommunity.com/id/dna_uk
 * @Date:    2014-04-24 09:20:06
-* @Last Modified by:   DnA
-* @Last Modified time: 2014-09-28 19:55:07
+ * @Last Modified by: MoarRightRudder
+ * @Last Modified time: 2018-03-28 19:40:08
 */
 
 class Header
@@ -118,12 +118,18 @@ class CfgRemoteExec
 	{
 		mode = 2;
 		jip = 1;
-		class localityChange {allowedTargets = 0;};
+		class psq_fnc_localityChange {allowedTargets = 0;};
 		class psq_fnc_lzPractice {allowedTargets = 2;};
 		class psq_fnc_lzGUI {allowedTargets = 0;};
 		class psq_fnc_a2aGUI {allowedTargets = 0;};
 		class dna_fnc_raceManagerServer {allowedTargets = 2;};
 		class dna_fnc_raceManagerClient {allowedTargets = 0;};
+	};
+	class Commands
+	{
+		mode = 2;
+		jip = 1;
+		class addEventHandler {allowedTargets = 0;};
 	};
 };
 

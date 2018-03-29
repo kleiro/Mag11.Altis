@@ -1,8 +1,8 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, DnA Race Manager Client">*/
+/*%FSM<COMPILE "F:\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, DnA Race Manager Client">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"Init"};
-item1[] = {"Client",8,218,80.430481,-125.000000,170.430481,-75.000000,1.000000,"Client"};
+item1[] = {"Client",4,218,80.430481,-125.000000,170.430481,-75.000000,1.000000,"Client"};
 item2[] = {"Setup",2,250,75.000000,-50.000000,175.000000,0.000000,0.000000,"Setup"};
 item3[] = {"Wait",4,218,75.000000,25.000000,175.000000,75.000000,0.000000,"Wait"};
 item4[] = {"Countdown",2,250,75.000000,100.000000,175.000000,150.000000,0.000000,"Countdown"};
@@ -22,9 +22,9 @@ item17[] = {"",7,210,246.000000,396.000000,254.000000,404.000000,0.000000,""};
 item18[] = {"Is_Next_Lap",4,218,325.000000,425.000000,425.000000,475.000000,1.000000,"Is Next Lap"};
 item19[] = {"Next_Lap",2,250,325.000000,500.000000,425.000000,550.000000,0.000000,"Next Lap"};
 item20[] = {"Finish",4,218,450.000000,425.000000,550.000000,475.000000,2.000000,"Finish"};
-item21[] = {"End",1,4346,450.000000,500.000000,550.000000,550.000000,0.000000,"End"};
+item21[] = {"End",1,250,450.000000,500.000000,550.000000,550.000000,0.000000,"End"};
 item22[] = {"Stage_Cleared",2,250,450.000000,325.000000,550.000000,375.000000,0.000000,"Stage" \n "Cleared"};
-item23[] = {"Non_participant",4,218,-220.119476,-132.538879,-94.821686,-63.532410,10.000000,"Non participant"};
+item23[] = {"Non_participant",4,4314,-220.119476,-132.538879,-94.821686,-63.532410,100.000000,"Non participant"};
 item24[] = {"End_1",1,250,-365.813812,-123.035606,-275.813782,-73.035629,0.000000,"End"};
 link0[] = {0,1};
 link1[] = {0,23};
@@ -52,8 +52,8 @@ link22[] = {19,9};
 link23[] = {20,21};
 link24[] = {22,8};
 link25[] = {23,24};
-globals[] = {0.000000,0,0,0,0,640,480,1,63,6316128,1,-524.424500,797.884583,542.516418,-209.230652,973,668,1};
-window[] = {2,-1,-1,-1,-1,1230,-18,1538,346,3,991};
+globals[] = {0.000000,0,0,0,0,640,480,1,63,6316128,1,-430.639618,619.116211,650.815552,-302.918304,973,884,1};
+window[] = {2,-1,-1,-1,-1,1066,182,1738,182,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -75,10 +75,10 @@ class FSM
                                 class Non_participant
                                 {
                                         itemno = 23;
-                                        priority = 10.000000;
+                                        priority = 100.000000;
                                         to="End_1";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"if (!((vehicle player) isKindOf 'kart_01_base_f') || !((vehicle Player) inArea kartStartTrigger))"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!((vehicle player) isKindOf 'kart_01_base_f') || !((vehicle Player) inArea kartStartTrigger)"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -89,7 +89,7 @@ class FSM
                                         priority = 1.000000;
                                         to="Setup";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((vehicle player) isKindOf 'kart_01_base_f') && ((vehicle Player) inArea kartStartTrigger)"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

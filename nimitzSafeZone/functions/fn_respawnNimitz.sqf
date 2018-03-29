@@ -38,7 +38,7 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 			missionNamespace setVariable ["nimitzVehDir", _dirs];
 
 			//Add mpKilled event handler that will execute this script again after firing
-			_x addMPEventHandler ["MPKilled", {[_this select 0] spawn respawnNimVeh; diag_log format ["*** killed object: %1", _this select 0];}];
+			_x addMPEventHandler ["MPKilled", {[_this select 0] spawn psq_fnc_respawnNimitz; diag_log format ["*** killed object: %1", _this select 0];}];
 
 			//Check if type is Viper or huey and add an unpack action
 			if (_x isKindOf "RHS_AH1Z_base" or _x isKindOf "RHS_UH1Y_base") then {
@@ -203,7 +203,7 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 
 	_newobj setVariable ["name", _objectName];
 	_newobj removeAllMPEventHandlers "MPKilled";
-	_newobj addMPEventHandler ["MPKilled", {[_this select 0] spawn respawnNimVeh;}];
+	_newobj addMPEventHandler ["MPKilled", {[_this select 0] spawn psq_fnc_respawnNimitz;}];
 
 };
 

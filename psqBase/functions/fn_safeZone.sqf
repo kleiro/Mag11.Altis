@@ -1,28 +1,34 @@
 /*
  * @Author: MoarRightRudder 
- * @Date: 2018-03-13 14:24:31 
- * @Last Modified by:   MoarRightRudder 
- * @Last Modified time: 2018-03-13 14:24:31 
+ * @Date: 2018-03-28 17:05:07 
+ * @Last Modified by: MoarRightRudder
+ * @Last Modified time: 2018-03-28 19:41:18
  */
-//Nimitz Safe Zone
-//Adds and removes objects to invulnerability list
-//_thisList is passed from trigger
-//If a vehicle and it's crew are inside the safe zone for 5 iterations (~5 seconds, damage will be disabled)
+
+//SafeZone
+//Creates a safe zone for players and vehicles within rectangular markers labeled safeZone_x
 
 if !(isServer) exitWith {};
 
-params ["_nimitz"];
+params["_marker"];
 
 _oldList = [];
 _newIterList = [[],[]];
+{
+	[player, ["getInMan", {
+		player allowDamage (player getVariable ["enableDamage", true]);
+	}]] remoteExec ["addEventHandler", 0, true];
+
+}forEach allPlayers;
 
 while {true} do {
-	_oldList sort true;
-	_newList = [_nimitz] call psq_fnc_unitsOnNimitz;
 
-	if !(_oldList isEqualTo _newList) then {
+    _oldList sort true;
+	_newList = [_marker] call psq_fnc_unitsInArea;
 
-		//Check for objects that have left the safe zone (_newList) compared to the last check (_oldList) and enable damage on them (must be enabled locally hence remoteExec)
+	if(!(_oldList isEqualTo _newList)) then {
+		
+		//First check for objects that have left the safe zone and enable damage on them
 		_oldListRemoval = [];
 		{
 			_object = _x;
@@ -35,12 +41,10 @@ while {true} do {
 					_man setVariable ["enableDamage", true];
 				}forEach _crew;
 
-				[_x, true] remoteExec ["allowDamage", _x];
-				_oldListRemoval pushBack _x;
-				_x setVariable ["enableDamage", true];
+				[_object, true] remoteExec ["allowDamage", _object];
+				_oldListRemoval pushBack _object;
+				_object setVariable ["EnableDamage", true, true];
 			};
-
-
 		}forEach _oldList;
 
 		//Delete objects that have left the safe zone from _oldList
@@ -48,9 +52,7 @@ while {true} do {
 			_oldList deleteAt (_oldList find _x);
 		}forEach _oldListRemoval;
 
-
-		//Check for objects that have ENTERED the safe zone (_newList) compared to what is currently inside (_oldList) and disable damage on them after 5 iterations
-		//If the object is a man, then damage must be disabled immediately
+		//Check for objects that have entered the safe zone
 		_oldIterList = +_newIterList;
 		_newIterList = [[],[]];
 		{
@@ -58,9 +60,9 @@ while {true} do {
 			if !(_object in _oldList) then {
 				if (_object isKindOf "Man") then {
 
-					[_x, false] remoteExec ["allowDamage", _x];
-					_oldList pushBackUnique _x;
-					_x setVariable ["enableDamage", false];
+					[_object, false] remoteExec ["allowDamage", _object];
+					_oldList pushBackUnique _object;
+					_object setVariable ["enableDamage", false, true];
 
 				} else {
 
@@ -78,19 +80,19 @@ while {true} do {
 
 							if (_iteration > 4) then {
 
-								_x setVariable ["enableDamage", false];
+								_object setVariable ["enableDamage", false, true];
 								_crew = fullCrew _object;
 								{
 									_man = _x select 0;
 									[_man, false] remoteExec ["allowDamage", _man];
 									_oldList pushBackUnique _man;
-									_man setVariable ["enableDamage", false];
+									_man setVariable ["enableDamage", false, true];
 								}forEach _crew;
 
-								[_x, false] remoteExec ["allowDamage", _x];
-								_oldList pushBackUnique _x;
-								_x removeAllEventHandlers "Local";
-								_x addEventHandler ["local", {
+								[_object, false] remoteExec ["allowDamage", _object];
+								_oldList pushBackUnique _object;
+								_object removeAllEventHandlers "Local";
+								_object addEventHandler ["local", {
 									if (!(_this select 1) && !(isNull (_this select 0))) then {
 										[(_this select 0), ((_this select 0) getVariable "enableDamage")] remoteExec ["allowDamage", (_this select 0)];
 										[(_this select 0)] remoteExec ["localityChange", (_this select 0)];
@@ -104,7 +106,7 @@ while {true} do {
 					};
 				};
 			};
-		}forEach _newList;
+		}forEach _newList; 
 	};
 	uisleep 1;
 };

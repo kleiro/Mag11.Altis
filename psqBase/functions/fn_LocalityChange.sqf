@@ -10,8 +10,10 @@
 params ["_object"];
 
 _object removeAllEventHandlers "local";
+
 _object addEventHandler ["local", {
-	if !((_this select 1)) then {
+	if (!(_this select 1) && !(isNull (_this select 0))) then {
+		[(_this select 0), ((_this select 0) getVariable "enableDamage")] remoteExec ["allowDamage", (_this select 0)];
 		[(_this select 0)] remoteExec ["localityChange", (_this select 0)];
 	};
 }];
