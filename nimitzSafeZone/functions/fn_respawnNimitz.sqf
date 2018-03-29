@@ -37,8 +37,19 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 			_dirs pushBack (getDir _x);
 			missionNamespace setVariable ["nimitzVehDir", _dirs];
 
+			_dhp = +(missionNamespace getVariable ["VehDHP", []]);
+			_dhp pushBack (_x getVariable ["DHP", false]);
+			missionNamespace setVariable ["VehDHP", _dhp];
+
+			_mkrs = +(missionNamespace getVariable ["VehMarker", []]);
+			_mkrs pushBack _nimitz;
+			missionNamespace setVariable ["VehMarker", _mkrs];
+
 			//Add mpKilled event handler that will execute this script again after firing
-			_x addMPEventHandler ["MPKilled", {[_this select 0] spawn psq_fnc_respawnNimitz; diag_log format ["*** killed object: %1", _this select 0];}];
+			_x addMPEventHandler ["MPKilled", {
+				[_this select 0] spawn psq_fnc_respawnNimitz; 
+				diag_log format ["*** killed object: %1", _this select 0];
+			}];
 
 			//Check if type is Viper or huey and add an unpack action
 			if (_x isKindOf "RHS_AH1Z_base" or _x isKindOf "RHS_UH1Y_base") then {
@@ -89,15 +100,16 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 	params ["_object"];
 	_objectName = _object getVariable "name";
 
-	uisleep 30;
+	uisleep 28;
 	_index = (missionNamespace getVariable "nimitzVehNames") find _objectName;
 
 	_type = (missionNamespace getVariable "nimitzVehTypes") select _index;
 	_pos = (missionNamespace getVariable "nimitzVehPos") select _index;
 	_dir = (missionNamespace getVariable "nimitzVehDir") select _index;
+	_dhp = (missionNamespace getVariable "VehDHP") select _index;
+	_mkr = (missionNamespace getVariable "VehMarker") select _index;
 
-	_newobj = createVehicle [_type, [0,0,500], [], 0, "NONE"];
-
+	_newobj = createVehicle [_type, [0,0,10000], [], 0, "NONE"];
 
 	//Fold wings/rotors before placing on carrier
 	_typeSelect = -1;
@@ -198,6 +210,14 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 		};
 	};
 
+	//clean the area before moving the vehicle to its position
+	{
+		if ((_x distance _pos) < 20 && damage _x == 1) then {
+			deleteVehicle _x;
+		};
+    } forEach ([_mkr] call psq_fnc_unitsOnNimitz);
+	uisleep 2;
+
 	_newobj setDir _dir;
 	_newobj setPosWorld _pos;
 
@@ -205,6 +225,7 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 	_newobj removeAllMPEventHandlers "MPKilled";
 	_newobj addMPEventHandler ["MPKilled", {[_this select 0] spawn psq_fnc_respawnNimitz;}];
 
+	if(_dhp) then {[_newobj] spawn psq_fnc_damagedHeloPractice;};
 };
 
 /*hornet:

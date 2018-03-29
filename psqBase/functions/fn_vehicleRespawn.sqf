@@ -68,7 +68,7 @@ if !(missionNamespace getVariable ["RespawnInit", false]) then {
 	params ["_object"];
 	_objectName = _object getVariable "name";
 
-	uisleep 27;
+	uisleep 28;
 	_index = (missionNamespace getVariable "VehName") find _objectName;
 
 	_type = (missionNamespace getVariable "VehType") select _index;
@@ -77,15 +77,15 @@ if !(missionNamespace getVariable ["RespawnInit", false]) then {
 	_dhp = (missionNamespace getVariable "VehDHP") select _index;
 	_mkr = (missionNamespace getVariable "VehMarker") select _index;
 
-	_newobj = createVehicle [_type, [0,0,500], [], 0, "NONE"];
+	_newobj = createVehicle [_type, [0,0,1000], [], 0, "NONE"];
 
-	//clean the area before spawning the vehicle
+	//clean the area before moving the vehicle to its position
 	{
-		if ((_x distance _pos) < 30 && damage _x == 1) then {
+		if ((_x distance _pos) < 20 && damage _x == 1) then {
 			deleteVehicle _x;
 		};
     } forEach ([_mkr] call psq_fnc_unitsInArea);
-	uisleep 3;
+	uisleep 2;
 	
 	_newobj setDir _dir;
 	_newobj setPosWorld _pos;
@@ -95,5 +95,4 @@ if !(missionNamespace getVariable ["RespawnInit", false]) then {
 	_newobj addMPEventHandler ["MPKilled", {[_this select 0] spawn psq_fnc_vehicleRespawn;}];
 
 	if(_dhp) then {[_newobj] spawn psq_fnc_damagedHeloPractice;};
-
 };

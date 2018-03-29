@@ -6,11 +6,11 @@
  */
 //nimitzCleanup
 
-params["_nimitz"];
+params["_nimitz","_time"];
 
 while {true} do {
 	{
 		if(damage _x == 1) then {deleteVehicle _x};
 	}forEach ([_nimitz] call psq_fnc_unitsOnNimitz);
-	uisleep 20;
+	uisleep _time;
 };

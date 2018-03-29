@@ -14,5 +14,5 @@ while {true} do {
     		deleteVehicle _x;
     	};
     } forEach ([_marker] call psq_fnc_unitsInArea);
-	sleep _time;
+	uisleep _time;
 };
