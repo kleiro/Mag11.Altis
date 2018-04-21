@@ -16,7 +16,7 @@ class Header
 //--- Meta
 author = "DnA";
 onLoadName = "NMD Sandbox";
-onLoadMission = "Edited for MAG 36 by R.Klein";
+onLoadMission = "Edited for MAG 11 by R.Klein";
 loadScreen = "loadScreen.paa";
 
 //--- Settings
@@ -116,7 +116,7 @@ class CfgRemoteExec
 {
 	class Functions
 	{
-		mode = 2;
+		mode = 1;
 		jip = 1;
 		class psq_fnc_localityChange {allowedTargets = 0;};
 		class psq_fnc_lzPractice {allowedTargets = 2;};
@@ -127,7 +127,7 @@ class CfgRemoteExec
 	};
 	class Commands
 	{
-		mode = 2;
+		mode = 1;
 		jip = 1;
 		class addEventHandler {allowedTargets = 0;};
 	};
