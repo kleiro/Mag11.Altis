@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=376;
+		nextID=377;
 	};
 	class Camera
 	{
-		pos[]={14646.961,42.91,16746.607};
-		dir[]={-0.50716132,-0.67474383,0.53620332};
-		up[]={-0.4636561,0.73805082,0.49020669};
-		aside[]={0.7265088,-1.2663077e-007,0.68716007};
+		pos[]={14632.75,30.221092,16764.018};
+		dir[]={-0.5224086,-0.70587349,0.47849637};
+		up[]={-0.52051592,0.70834154,0.47676301};
+		aside[]={0.67547727,-1.8861465e-007,0.73746824};
 	};
 };
 binarizationWanted=0;
@@ -487,7 +487,7 @@ class Mission
 			text="Fighter Hangars";
 			type="Empty";
 			colorName="ColorWEST";
-			angle=226.08595;
+			angle=226.08585;
 			id=3;
 			atlOffset=0.00031661987;
 		};

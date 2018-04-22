@@ -215,7 +215,7 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 		if ((_x distance _pos) < 20 && damage _x == 1) then {
 			deleteVehicle _x;
 		};
-    } forEach ([_mkr] call psq_fnc_unitsOnNimitz);
+    } forEach ([_nimitz] call psq_fnc_unitsOnNimitz);
 	uisleep 2;
 
 	_newobj setDir _dir;

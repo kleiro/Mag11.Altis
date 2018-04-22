@@ -116,7 +116,7 @@ class CfgRemoteExec
 {
 	class Functions
 	{
-		mode = 1;
+		mode = 2;
 		jip = 1;
 		class psq_fnc_localityChange {allowedTargets = 0;};
 		class psq_fnc_lzPractice {allowedTargets = 2;};
@@ -127,7 +127,7 @@ class CfgRemoteExec
 	};
 	class Commands
 	{
-		mode = 1;
+		mode = 2;
 		jip = 1;
 		class addEventHandler {allowedTargets = 0;};
 	};

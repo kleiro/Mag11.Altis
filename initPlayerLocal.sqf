@@ -22,6 +22,7 @@ NMD_ParamRespawnLoadout = ( [ "RespawnLoadout", 1 ] call BIS_fnc_getParamValue )
 NMD_playerInit = {
 
 	player addAction [ "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\eject_ca.paa' /> <t color='#E6731A'>NMD Menu</t>", { createDialog "NMD_RscDisplayMenu" }, nil, -1, false, true ];
+	diag_log "^^^^^^Running NMD Init";
 
 };
 
