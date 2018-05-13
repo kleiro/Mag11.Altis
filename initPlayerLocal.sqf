@@ -130,7 +130,7 @@ player addEventHandler [ "Killed", {
 
 _player createDiaryRecord ["Diary", ["Karting", "Karts are availabe at the Kart Track. Races can be initiated by lining up on the start line and using the scroll wheel action."]];
 _player createDiaryRecord ["Diary", ["LZ Practice", "Use the MAG Laptops to select the difficulty and which types/how many helicopters will be used in the scenario. A maximum of 2 scenarios may be active at a time."]];
-_player createDiaryRecord ["Diary", ["Autorotation Practice", "Four UH-1Y's at the main airfield contain autorotation and rock-out scripts for practicing with a damaged helicopter."]];
+_player createDiaryRecord ["Diary", ["Autorotation Practice", "Four UH-1Y's at Almyra Airfield in the salt flats contain autorotation and rock-out scripts for practicing with a damaged helicopter."]];
 _player createDiaryRecord ["Diary", ["Convoy Hunts", "Enemy convoys can be spawned and despawned using the MAG laptops. A total of 12 vehicles will be spawned."]];
 _player createDiaryRecord ["Diary", ["Air to Air Range", "Use the MAG Laptops to select how many and what types of aircraft will spawn when a player enters the air to air range. Multiple enemy aircraft types can be selected by holding 'CTRL' and clicking. The default ratio is 1 enemy per friendly."]];
 _player createDiaryRecord ["Diary", ["Time Acceleration", "A time acceleration factor of 12x is active to provide both night and day practice in a short period of time. Each hour on the server is 5 minutes in real time. A full day is 2 hours in real time."]];

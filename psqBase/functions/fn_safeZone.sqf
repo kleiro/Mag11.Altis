@@ -24,9 +24,10 @@ fnc_entered = {
 		_object setVariable ["enableDamage", false, true];
 	};
 
-	//Enable damage on a vehicle and it's crew if it stays in the safezone for more than 7 seconds
+	//Enable damage on a vehicle and it's crew if it stays in the safezone for more than 7 seconds and it's velocity is less than 3
 	while {_i<7} do {
-		if(_object in ([_marker] call psq_fnc_unitsInArea)) then {
+		_vel = (((velocity _object) select 0) + ((velocity _object) select 1) + ((velocity _object) select 2));
+		if(_object in ([_marker] call psq_fnc_unitsInArea) && _vel < 3) then {
 			_i = _i + 1;
 			uisleep 1;
 		} else {
