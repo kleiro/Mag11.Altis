@@ -3,7 +3,7 @@
 * @Profile: http://steamcommunity.com/id/dna_uk
 * @Date:    2014-04-24 09:20:06
  * @Last Modified by: MoarRightRudder
- * @Last Modified time: 2018-03-28 19:40:08
+ * @Last Modified time: 2018-05-17 16:36:55
 */
 
 class Header
@@ -21,7 +21,7 @@ loadScreen = "loadScreen.paa";
 
 //--- Settings
 respawn = 3;
-respawnDelay = 3;
+respawnDelay = 5;
 respawnOnStart = 1;
 respawnTemplates[] = { "MenuPosition" };
 disabledAI = 1;
@@ -47,6 +47,7 @@ class CfgFunctions
 	#include "air2air\Air2AirCfgFunctions.hpp"
 	#include "nimitzSafeZone\NimitzCfgFunctions.hpp"
 	#include "convoyHunt\convoyHuntCfgFunctions.hpp"
+	#include "tiberiusMedical\tiberiusMedicalCfgFunctions.hpp"
 };
 
 //--- Sounds
@@ -124,6 +125,7 @@ class CfgRemoteExec
 		class psq_fnc_a2aGUI {allowedTargets = 0;};
 		class dna_fnc_raceManagerServer {allowedTargets = 2;};
 		class dna_fnc_raceManagerClient {allowedTargets = 0;};
+		class psq_fnc_tibDelete {allowedTargets = 0;};
 	};
 	class Commands
 	{

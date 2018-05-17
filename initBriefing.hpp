@@ -2,10 +2,10 @@
 * @Author:  DnA
 * @Profile: http://steamcommunity.com/id/dna_uk
 * @Date:    2014-04-24 09:20:06
-* @Last Modified by:   DnA
-* @Last Modified time: 2014-05-10 16:21:39
+ * @Last Modified by: MoarRightRudder
+ * @Last Modified time: 2018-05-17 14:58:53
 */
- 
+ /*
 //--- Skip briefing
 [] spawn {
 
@@ -28,4 +28,4 @@
 
 	};
 
-};
+};*/

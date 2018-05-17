@@ -1,22 +1,22 @@
 /*
  * @Author: MoarRightRudder 
  * @Date: 2018-03-13 14:24:34 
- * @Last Modified by:   MoarRightRudder 
- * @Last Modified time: 2018-03-13 14:24:34 
+ * @Last Modified by: MoarRightRudder
+ * @Last Modified time: 2018-05-17 15:38:00
  */
 //Respawn Nimitz
 
 if !(isServer) exitWith {};
+params["_nimORobj"];
 
-params["_nimitz"];
-
-_unitList = [_nimitz] call psq_fnc_unitsOnNimitz;
-
-if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
-
+if (_nimORobj getVariable ["isNimInit", false]) then {
+	
 	//initialization section (only runs once at the beginning of the mission)
 	//gathers information on all editor-placed vehicles on the nimitz
-
+	
+	_nimitz = _nimORobj;
+	_unitList = [_nimitz] call psq_fnc_unitsOnNimitz;
+	
 	{
 		if (_x isKindOf "Air" || _x isKindOf "LandVehicle" || _x isKindOf "ReammoBox_F") then {
 			//Add vehicle name, type, posWorld, and dir to nimitzVehicles arrays
@@ -37,13 +37,13 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 			_dirs pushBack (getDir _x);
 			missionNamespace setVariable ["nimitzVehDir", _dirs];
 
-			_dhp = +(missionNamespace getVariable ["VehDHP", []]);
+			_dhp = +(missionNamespace getVariable ["NimVehDHP", []]);
 			_dhp pushBack (_x getVariable ["DHP", false]);
-			missionNamespace setVariable ["VehDHP", _dhp];
+			missionNamespace setVariable ["NimVehDHP", _dhp];
 
-			_mkrs = +(missionNamespace getVariable ["VehMarker", []]);
+			_mkrs = +(missionNamespace getVariable ["NimVehMarker", []]);
 			_mkrs pushBack _nimitz;
-			missionNamespace setVariable ["VehMarker", _mkrs];
+			missionNamespace setVariable ["NimVehMarker", _mkrs];
 
 			//Add mpKilled event handler that will execute this script again after firing
 			_x addMPEventHandler ["MPKilled", {
@@ -91,14 +91,14 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 		["RHS_UH1Y_base"],
 		["FLAN_EA18G_Base"]
 	]];
-	missionNamespace setVariable ["nimitzRespawnInit", true];
+	_nimitz setVariable ["isNimInit", false];
 
 } else {
 	//Section that's run when the mpKilled event handler fires
 	//This creates a new vehicle in the original starting position of the old one
 
-	params ["_object"];
-	_objectName = _object getVariable "name";
+	_object = _nimORobj;
+	_objectName = (_object getVariable "name");
 
 	uisleep 28;
 	_index = (missionNamespace getVariable "nimitzVehNames") find _objectName;
@@ -106,8 +106,8 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 	_type = (missionNamespace getVariable "nimitzVehTypes") select _index;
 	_pos = (missionNamespace getVariable "nimitzVehPos") select _index;
 	_dir = (missionNamespace getVariable "nimitzVehDir") select _index;
-	_dhp = (missionNamespace getVariable "VehDHP") select _index;
-	_mkr = (missionNamespace getVariable "VehMarker") select _index;
+	_dhp = (missionNamespace getVariable "NimVehDHP") select _index;
+	_mkr = (missionNamespace getVariable "NimVehMarker") select _index;
 
 	_newobj = createVehicle [_type, [0,0,10000], [], 0, "NONE"];
 
@@ -215,7 +215,7 @@ if !(missionNamespace getVariable ["nimitzRespawnInit", false]) then {
 		if ((_x distance _pos) < 20 && damage _x == 1) then {
 			deleteVehicle _x;
 		};
-    } forEach ([_nimitz] call psq_fnc_unitsOnNimitz);
+    } forEach ([_mkr] call psq_fnc_unitsOnNimitz);
 	uisleep 2;
 
 	_newobj setDir _dir;
