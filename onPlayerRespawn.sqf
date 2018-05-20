@@ -3,7 +3,7 @@
 
 //Finds if the player respawns close to the nimitz and then moves them to the correct location
 //Solves the issue of having a trigger to move players
-params ["_unit"];
+_unit = _this select 0;
 _time = time + 5;
 #include "race\racePlayerLocalInclude.hpp"
 

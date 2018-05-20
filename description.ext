@@ -14,9 +14,9 @@ class Header
 };
 
 //--- Meta
-author = "DnA";
-onLoadName = "NMD Sandbox";
-onLoadMission = "Edited for MAG 11 by R.Klein";
+author = "[Capt] R.Klein [Ret.]";
+onLoadName = "MAG-11 Training";
+onLoadMission = "Developed specifically for MAG-11";
 loadScreen = "loadScreen.paa";
 
 //--- Settings
@@ -91,6 +91,8 @@ class Params
 	#include "nmd\modules\vehicles\params.hpp"
 };
 
+//Delete
+/*
 class CfgHints
 {
 	class Sandbox
@@ -112,7 +114,7 @@ class CfgHints
 		};
 	};
 };
-
+*/
 class CfgRemoteExec
 {
 	class Functions

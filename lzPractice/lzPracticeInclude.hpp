@@ -9,7 +9,7 @@
 
 taskIndex = 100;
 missionNamespace setVariable["lzTasks",[],true];
-missionNamespace setVariable ["lzpDropOff",[14169.9,16264.5,0]];
+missionNamespace setVariable ["lzpDropOff",[15320.488,17455.217,0]];
 missionNamespace setVariable ["lzpNames",[
 "Budweiser",
 "Heineken",

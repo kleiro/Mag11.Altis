@@ -33,7 +33,7 @@ call NMD_playerInit;
 #include "race\racePlayerLocalInclude.hpp"
 
 //--- Intro hint
-[ [ "Sandbox", "AccessMenu" ], nil, nil, nil, nil, true, true ] call BIS_fnc_advHint;
+//[ [ "Sandbox", "AccessMenu" ], nil, nil, nil, nil, true, true ] call BIS_fnc_advHint;
 
 //--- Respawn handler
 player addEventHandler [ "Respawn", {
@@ -54,7 +54,7 @@ player addEventHandler [ "Respawn", {
 	[ _corpse, 0 ] call NMD_fnc_cleanupUnit;
 
 	//--- Add player action menu
-	call NMD_playerInit;
+	//call NMD_playerInit;
 
 	//--- Fatigue parameter
 	if ( NMD_ParamFatigue < 1 ) then {
